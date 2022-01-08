@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.inside4ndroid'
+version='3.0'
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 31
+        versionCode 100
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.3.0-rc01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-rc01'
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation('com.github.evgenyneu:js-evaluator-for-android:v4.0.0') {
+        exclude module: 'appcompat-v7'
+    }
+}
