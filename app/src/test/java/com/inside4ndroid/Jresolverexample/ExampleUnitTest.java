@@ -1,4 +1,4 @@
-package com.inside4ndroid.xgetterexample;
+package com.inside4ndroid.Jresolverexample;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.inside4ndroid.xgetterexample;
+package com.inside4ndroid.Jresolverexample;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -39,7 +39,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class MainActivity extends AppCompatActivity {
-    Jresolver xGetter;
+    Jresolver Jresolver;
     ProgressDialog progressDialog;
     String org;
     EditText edit_query;
@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        xGetter = new Jresolver(this);
+        Jresolver = new Jresolver(this);
 
         doTrustToCertificates();
 
-        xGetter.onFinish(new Jresolver.OnTaskCompleted() {
+        Jresolver.onFinish(new Jresolver.OnTaskCompleted() {
 
             @Override
             public void onTaskCompleted(ArrayList<Jmodel> vidURL, boolean multiple_quality) {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if (checkInternet()) {
             progressDialog.show();
             player_referer = referer;
-            xGetter.find(url);
+            Jresolver.find(url);
         }
     }
 

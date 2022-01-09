@@ -17,6 +17,7 @@ import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import kotlinx.android.synthetic.main.activity_xplayer.*
@@ -67,7 +68,10 @@ class XPlayer : AppCompatActivity() {
         //If google drive you need to set custom cookie
 
             if (mCookie != "null") {
-                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null)
+                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null,
+                        DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                        DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                        true)
                 httpDataSourceFactory.defaultRequestProperties.set("Cookie", mCookie)
                 dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
                 when (Util.inferContentType(Uri.parse(mUrl))) {
@@ -88,7 +92,10 @@ class XPlayer : AppCompatActivity() {
                     }
                 }
             } else if (mReferer != "null") {
-                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null)
+                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null,
+                        DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                        DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                        true)
                 httpDataSourceFactory.defaultRequestProperties.set("Referer", mReferer)
                 dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
                 when (Util.inferContentType(Uri.parse(mUrl))) {

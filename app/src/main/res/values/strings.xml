@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">JResolver Example</string>
-    <string name="developed_by_inside4ndroid_studios_ncredit_to_khun_htetz_naing_for_xgetter">Developed By Inside4ndroid Studios\ncredit to Khun Htetz Naing for xGetter</string>
+    <string name="developed_by_inside4ndroid_studios_ncredit_to_khun_htetz_naing_for_Jresolver">Developed By Inside4ndroid Studios\ncredit to Khun Htetz Naing for Jresolver</string>
     <string name="fetch">Fetch</string>
     <string name="enter_your_url">Enter a supported url</string>
     <string name="mp4upload">Mp4Upload</string>
@@ -68,9 +68,9 @@
     <string name="s_dailymotion">https://www.dailymotion.com/video/xyt1t1</string>
     <string name="s_vidbam">https://vidbam.org/n27dkro8fo8v.html</string>
     <string name="s_bittube" tools:ignore="TypographyDashes">https://bittube.video/videos/watch/8e02be96-fa09-4309-a469-3c74c945182b</string>
-    <string name="s_videobin">https://videobin.co/ajvfd15tz6d3</string>
+    <string name="s_videobin">https://videobin.co/v4mmc3lcdekg</string>
     <string name="s_fourshared">https://www.4shared.com/video/bLza9r9mea/45016068_2204489923208618_5254.html</string>
-    <string name="s_streamtape">https://streamtape.com/v/wZBq63qDq0CJ7Wk/video-788cfc16f87c4c094ab6b1d39a981d85-V.mp4</string>
+    <string name="s_streamtape">https://streamtape.com/v/qxo3gv62r7UzmWv/splash.mp4</string>
     <string name="s_vudeo">https://vudeo.net/azhfxfpzq6yq.html</string>
     <string name="no_connection">No internet connection!</string>
     <string name="congrats">Congratulations!</string>

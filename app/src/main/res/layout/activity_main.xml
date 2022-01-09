@@ -251,7 +251,7 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:onClick="dev"
-                android:text="@string/developed_by_inside4ndroid_studios_ncredit_to_khun_htetz_naing_for_xgetter"
+                android:text="@string/developed_by_inside4ndroid_studios_ncredit_to_khun_htetz_naing_for_Jresolver"
                 tools:ignore="UsingOnClickInXml" />
 
         </LinearLayout>
