@@ -51,7 +51,7 @@ I will be adding more hosters over time and fixing any issues reported.
 <pre>
 <code>
 dependencies {  <font></font>
-	implementation 'com.github.Inside4ndroid:resolver:2.0'<font></font>
+	implementation 'com.github.Inside4ndroid:resolver:3.0'<font></font>
 }<font></font>
 </code>
 </pre>
