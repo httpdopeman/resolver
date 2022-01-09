@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.inside4ndroid'
+group='com.github.Inside4ndroid'
 version='3.0'
 
 android {
