@@ -99,3 +99,17 @@ jResolver.onFinish(new Jresolver.OnTaskCompleted() {  <font></font>
   }  <font></font>
 });<font></font>
 </code></pre>
+
+### Dependencies used in the JResolver Library
+
+<a href="https://github.com/evgenyneu/js-evaluator-for-android">JS Evaluator For Android</a>
+
+<a href="https://github.com/amitshekhariitbhu/Fast-Android-Networking">Fast Android Networking Library</a>
+
+<a href="https://github.com/jhy/jsoup">JSoup</a>
+
+<a href="https://github.com/apache/commons-lang">Apache Commons Lang</a>
+
+### Special Thanks
+
+The library is based on the <a href="https://github.com/KhunHtetzNaing/xGetter">xGetter Library</a> by <a href="https://github.com/KhunHtetzNaing">Khun Htetz Naing</a>
