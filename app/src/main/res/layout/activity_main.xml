@@ -145,6 +145,13 @@
                         android:onClick="mixdrop"
                         android:text="@string/mixdrop"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="gounlimited"
+                        android:text="@string/gounlimited"
+                        tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 
                 <LinearLayout

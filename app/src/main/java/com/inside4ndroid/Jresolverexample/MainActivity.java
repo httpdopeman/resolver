@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
     public void amazon(View view) {letGo(getString(R.string.amazon), getString(R.string.amazon));}
     public void doodstream(View view) {letGo(getString(R.string.dood), getString(R.string.dood));}
     public void streamsb(View view) {letGo(getString(R.string.streamsb) , getString(R.string.streamsb));}
-    public void mixdrop(View view) {letGo("https://mixdrop.co/e/vnr7den9sl11e8?sub1=https://msubload.com/sub/tom-clancys-without-remorse/tom-clancys-without-remorse.vtt&sub1_label=English", "https://mixdrop.co/e/vnr7den9sl11e8?sub1=https://msubload.com/sub/tom-clancys-without-remorse/tom-clancys-without-remorse.vtt&sub1_label=English");}
+    public void mixdrop(View view) {letGo(getString(R.string.mdrop), getString(R.string.mdrop));}
+    public void gounlimited(View view) {letGo(getString(R.string.gounlimiteduri), getString(R.string.gounlimiteduri));}
 
     public boolean checkInternet() {
         boolean what;

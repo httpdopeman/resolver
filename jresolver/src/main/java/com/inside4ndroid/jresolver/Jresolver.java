@@ -10,6 +10,7 @@ import com.inside4ndroid.jresolver.Sites.BitTube;
 import com.inside4ndroid.jresolver.Sites.DMotion;
 import com.inside4ndroid.jresolver.Sites.Dood;
 import com.inside4ndroid.jresolver.Sites.FShared;
+import com.inside4ndroid.jresolver.Sites.GoUnlimited;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
 import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
@@ -65,6 +66,7 @@ public class Jresolver {
     private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws))/(?:d|e)/([0-9a-zA-Z]+)";
     private final String streamsb = ".+(streamsb|sbplay|sbplay2|sbembed|sbembed1|sbvideo|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb)\\.(com|net|one|org)/.+";
     private final String mixdrop = ".+(mixdrop)\\.(co|to|sx|bz)\\/.+";
+    private final String gounlimited = "https?:\\/\\/(www\\.)?(gounlimited)\\.[^\\/,^\\.]{2,}\\/.+";
 
     public Jresolver(@NonNull Context context){
         this.context=context;
@@ -118,6 +120,8 @@ public class Jresolver {
             StreamTape.fetch(url,onComplete);
         } else if (check(vudeo,url)) {
             Vudeo.fetch(url, onComplete);
+        } else  if (check(gounlimited,url)){
+            GoUnlimited.fetch(url,onComplete);
         } else if (check(youtube,url)) {
             YT.fetch(context,url, onComplete);
         } else onComplete.onError();
