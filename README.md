@@ -29,6 +29,7 @@ Supported Sites/Hosts :
 22. Doodstream
 23. StremSB
 24. Mixdrop
+25. GoUnlimited
 
 I will be adding more hosters over time and fixing any issues reported.
 
