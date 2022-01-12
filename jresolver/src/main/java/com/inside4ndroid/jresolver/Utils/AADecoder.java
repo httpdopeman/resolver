@@ -80,17 +80,13 @@ public class AADecoder {
                 encodedBlock = encodedBlock.substring(HEX_HASH_MARKER.length());
                 radix = 16;
             }
-            if (DEBUG) {
-                System.out.println("Rad " + radix);
-            }
+
             String uniCodeNumString = decodeBlock(encodedBlock, radix);
             if (isEmpty(uniCodeNumString)) {
                 throw new RuntimeException("Bad decoding for " + encodedBlock);
             }
             out += Character.toString((char) Integer.parseInt(uniCodeNumString, radix));
-            if (DEBUG) {
-                System.out.println(out);
-            }
+
         }
         return out;
     }
@@ -277,9 +273,7 @@ public class AADecoder {
 
             ret += Integer.toString((int) eval(expression), radix);
         }
-        if (DEBUG) {
-            System.out.println(ret + " - " + encodedBlock);
-        }
+
         return ret;
     }
 }

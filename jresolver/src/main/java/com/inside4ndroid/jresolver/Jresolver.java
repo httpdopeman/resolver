@@ -6,16 +6,26 @@ import androidx.annotation.NonNull;
 
 import com.androidnetworking.AndroidNetworking;
 import com.inside4ndroid.jresolver.Sites.Amazon;
+import com.inside4ndroid.jresolver.Sites.Anavidz;
+import com.inside4ndroid.jresolver.Sites.Aparat;
+import com.inside4ndroid.jresolver.Sites.Archive;
+import com.inside4ndroid.jresolver.Sites.BitChute;
 import com.inside4ndroid.jresolver.Sites.BitTube;
+import com.inside4ndroid.jresolver.Sites.Brighteon;
 import com.inside4ndroid.jresolver.Sites.DMotion;
+import com.inside4ndroid.jresolver.Sites.DeadlyBlogger;
 import com.inside4ndroid.jresolver.Sites.Dood;
 import com.inside4ndroid.jresolver.Sites.FShared;
+import com.inside4ndroid.jresolver.Sites.FanSubs;
+import com.inside4ndroid.jresolver.Sites.Diasfem;
+import com.inside4ndroid.jresolver.Sites.GDStream;
 import com.inside4ndroid.jresolver.Sites.GoUnlimited;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
 import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
 import com.inside4ndroid.jresolver.Sites.VideoBIN;
 import com.inside4ndroid.jresolver.Sites.VideoBM;
+import com.inside4ndroid.jresolver.Sites.Voxzer;
 import com.inside4ndroid.jresolver.Sites.Vudeo;
 import com.inside4ndroid.jresolver.Sites.YT;
 import com.inside4ndroid.jresolver.Utils.DailyMotionUtils;
@@ -67,6 +77,16 @@ public class Jresolver {
     private final String streamsb = ".+(streamsb|sbplay|sbplay2|sbembed|sbembed1|sbvideo|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb)\\.(com|net|one|org)/.+";
     private final String mixdrop = ".+(mixdrop)\\.(co|to|sx|bz)\\/.+";
     private final String gounlimited = "https?:\\/\\/(www\\.)?(gounlimited)\\.[^\\/,^\\.]{2,}\\/.+";
+    private final String voxzer = "https?:\\/\\/(player\\.)?(voxzer\\.)(?:org).+";
+    private final String anavidz = ".+(anavidz\\.com).+";
+    private final String aparat = ".+(aparat\\.com/v/).+";
+    private final String archive = ".+(archive)\\.(org)\\/.+";
+    private final String bitchute = ".+(bitchute\\.com)/(?:video|embed).+";
+    private final String brighteon = ".+(brighteon\\.com).+";
+    private final String deadlyblogger = ".+(deadlyblogger\\.com).+";
+    private final String fansubs = "https?:\\/\\/(www\\.)?(fansubs\\.tv)\\/(v|watch)\\/.+";
+    private final String diasfem = ".+(diasfem\\.com)/v|f/.+";
+    private final String gdstream = ".+(gdstream\\.net)/v|f/.+";
 
     public Jresolver(@NonNull Context context){
         this.context=context;
@@ -78,6 +98,26 @@ public class Jresolver {
             MP4Upload.fetch(url,onComplete);
         } else if (check(sendvid, url)) {
             SendVid.fetch(url,onComplete);
+        } else if (check(gdstream, url)) {
+            GDStream.fetch(url,onComplete);
+        } else if (check(diasfem, url)) {
+            Diasfem.fetch(url,onComplete);
+        } else if (check(fansubs, url)) {
+            FanSubs.fetch(url,onComplete);
+        } else if (check(deadlyblogger, url)) {
+            DeadlyBlogger.fetch(url,onComplete);
+        } else if (check(brighteon, url)) {
+            Brighteon.fetch(url,onComplete);
+        } else if (check(bitchute, url)) {
+            BitChute.fetch(url,onComplete);
+        } else if (check(archive, url)) {
+            Archive.fetch(url,onComplete);
+        } else if (check(aparat, url)) {
+            Aparat.fetch(url,onComplete);
+        }else if (check(anavidz, url)) {
+            Anavidz.fetch(url,onComplete);
+        } else if (check(voxzer, url)) {
+            Voxzer.fetch(url,onComplete);
         } else if (check(mixdrop, url)) {
             MixDrop.fetch(url,onComplete);
         } else if (check(streamsb, url)) {

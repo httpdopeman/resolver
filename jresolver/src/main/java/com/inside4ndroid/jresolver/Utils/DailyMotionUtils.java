@@ -32,7 +32,6 @@ public class DailyMotionUtils {
             while(iterator.hasNext()) {
                 String key = iterator.next();
                 if (!key.equalsIgnoreCase("auto")) {
-                    System.out.println("This is Direct");
                     JSONArray array = jsonObject.getJSONArray(key);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject temp = array.getJSONObject(i);
@@ -48,7 +47,6 @@ public class DailyMotionUtils {
                     }
                     showResult();
                 }else {
-                    System.out.println("This is HLS");
                     try {
                         final String url = jsonObject.getJSONArray(key).getJSONObject(0).getString("url");
                         new AsyncTask<Void,Void,Void>(){

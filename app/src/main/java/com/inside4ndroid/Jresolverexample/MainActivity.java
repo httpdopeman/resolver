@@ -114,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
     public void streamsb(View view) {letGo(getString(R.string.streamsb) , getString(R.string.streamsb));}
     public void mixdrop(View view) {letGo(getString(R.string.mdrop), getString(R.string.mdrop));}
     public void gounlimited(View view) {letGo(getString(R.string.gounlimiteduri), getString(R.string.gounlimiteduri));}
+    public void voxzer(View view) {letGo(getString(R.string.voxzer_uri), getString(R.string.voxzer_uri));}
+    public void anavidz(View view) {letGo(getString(R.string.anavidz_uri), getString(R.string.anavidz_uri));}
+    public void aparat(View view) {letGo(getString(R.string.aparat_uri), getString(R.string.aparat_uri));}
+    public void archive(View view) {letGo(getString(R.string.archive_uri), getString(R.string.archive_uri));}
+    public void bitchute(View view) {letGo(getString(R.string.bitchute), getString(R.string.bitchute));}
+    public void brighteon(View view) {letGo(getString(R.string.brighteon), getString(R.string.brighteon));}
+    public void deadlyblogger(View view) {letGo(getString(R.string.deadlyblogger),getString(R.string.deadlyblogger));}
+    public void fansubs(View view) {letGo(getString(R.string.fansubs),getString(R.string.fansubs));}
+    public void diasfem(View view) {letGo(getString(R.string.diasfem),getString(R.string.diasfem));}
+    public void gdstream(View view) {letGo(getString(R.string.gdstream),getString(R.string.gdstream));}
 
     public boolean checkInternet() {
         boolean what;
@@ -131,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         String url = null;
         if (xModel!=null) {
             url = xModel.getUrl();
-            checkFileSize(xModel);
+            //checkFileSize(xModel);
         }
         MaterialStyledDialog.Builder builder = new MaterialStyledDialog.Builder(this);
         if (url!=null) {
@@ -247,43 +257,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setPositiveButton(R.string.ok_z, null);
         builder.show();
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    private void checkFileSize(Jmodel xModel){
-        new AsyncTask<Void,Void,String>(){
-
-            @Override
-            protected String doInBackground(Void... voids) {
-                if (xModel.getUrl()!=null) {
-                    try {
-                        URLConnection connection = new URL(xModel.getUrl()).openConnection();
-                        if (xModel.getCookie() != null) {
-                            connection.setRequestProperty(getString(R.string.cookie), xModel.getCookie());
-                        }
-                        connection.connect();
-                        return calculateFileSize(connection.getContentLength());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                System.out.println(xModel.getUrl()+R.string.file_size+s+getString(R.string.cookie_z)+xModel.getCookie());
-                Toast.makeText(MainActivity.this, getString(R.string.files_size_z)+s, Toast.LENGTH_SHORT).show();
-            }
-        }.execute();
-    }
-
-    private String calculateFileSize(long size) {
-        if(size <= 0) return getString(R.string.zero);
-        final String[] units = new String[] { getString(R.string.b), getString(R.string.kb), getString(R.string.mb), getString(R.string.gb), getString(R.string.tb) };
-        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
-        return new DecimalFormat(getString(R.string.decimal_format)).format(size/Math.pow(1024, digitGroups)) + getString(R.string.space) + units[digitGroups];
     }
 
     public void doTrustToCertificates() {

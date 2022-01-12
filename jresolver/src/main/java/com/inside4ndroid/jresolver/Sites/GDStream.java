@@ -1,5 +1,7 @@
 package com.inside4ndroid.jresolver.Sites;
 
+import static com.inside4ndroid.jresolver.Utils.Utils.sortMe;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.OkHttpResponseListener;
@@ -16,11 +18,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.inside4ndroid.jresolver.Utils.Utils.sortMe;
-
 import okhttp3.Response;
 
-public class FEmbed {
+public class GDStream {
+
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
         final String id = get_fEmbed_video_ID(url);
 
@@ -30,28 +31,24 @@ public class FEmbed {
                     .getAsOkHttpResponse(new OkHttpResponseListener() {
                         @Override
                         public void onResponse(Response response) {
-                            final String regex = "url=(.*?)/v/";
-                            final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-                            final Matcher matcher = pattern.matcher(response.toString());
-                            if (matcher.find()) {
-                                AndroidNetworking.post(matcher.group(1)+"/api/source/"+id)
-                                        .build()
-                                        .getAsString(new StringRequestListener() {
-                                            @Override
-                                            public void onResponse(String response) {
-                                                ArrayList<Jmodel> jModels = parse(response);
-                                                if (jModels!=null){
-                                                    onComplete.onTaskCompleted(sortMe(jModels),true);
-                                                }else onComplete.onError();
-                                            }
 
-                                            @Override
-                                            public void onError(ANError anError) {
-                                                onComplete.onError();
-                                            }
-                                        });
+                            AndroidNetworking.post("https://gdstream.net/api/source/"+id)
+                                    .build()
+                                    .getAsString(new StringRequestListener() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            ArrayList<Jmodel> jModels = parse(response);
+                                            if (jModels!=null){
+                                                onComplete.onTaskCompleted(sortMe(jModels),true);
+                                            }else onComplete.onError();
+                                        }
 
-                            }
+                                        @Override
+                                        public void onError(ANError anError) {
+                                            onComplete.onError();
+                                        }
+                                    });
+
                         }
 
                         @Override

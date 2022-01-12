@@ -17,7 +17,6 @@ import android.util.Log;
 
 public class FileRIO {
     public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){
-        Log.d("THE URL ", url);
         url = fixURL(url);
         AndroidNetworking.get(url)
                 .build()
@@ -25,7 +24,6 @@ public class FileRIO {
                     @Override
                     public void onResponse(String response) {
                         String src = getSrc(response);
-                        Log.d("THE FULL SOURCE", src);
                         if (src!=null){
                             ArrayList<Jmodel> jModels = new ArrayList<>();
                             putModel(src,"Normal",jModels);

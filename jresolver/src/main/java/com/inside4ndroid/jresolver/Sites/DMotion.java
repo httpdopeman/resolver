@@ -21,8 +21,6 @@ public class DMotion {
 
         String meta_url = "https://www.dailymotion.com/player/metadata/video/"+getMediaID(url);
 
-        Log.d("META URL ", meta_url);
-
         AndroidNetworking.get(meta_url)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

@@ -286,8 +286,6 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     videoDetails.getBoolean("isLiveContent"),
                     videoDetails.getString("shortDescription"));
 
-        } else {
-            Log.d(LOG_TAG, "ytPlayerResponse was not found");
         }
 
         if (encSignatures.size() > 0) {
@@ -310,9 +308,6 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 }
                 decipherJsFileName = curJsFileName;
             }
-
-            if (LOGGING)
-                Log.d(LOG_TAG, "Decipher signatures: " + encSignatures.size() + ", videos: " + ytFiles.size());
 
             String signature;
             decipheredSignature = null;
@@ -341,8 +336,6 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         }
 
         if (ytFiles.size() == 0) {
-            if (LOGGING)
-                Log.d(LOG_TAG, pageHtml);
             return null;
         }
 
@@ -374,13 +367,9 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 urlConnection.disconnect();
             }
 
-            if (LOGGING)
-                Log.d(LOG_TAG, "Decipher FunctURL: " + decipherFunctUrl);
             Matcher mat = patSignatureDecFunction.matcher(javascriptFile);
             if (mat.find()) {
                 decipherFunctionName = mat.group(1);
-                if (LOGGING)
-                    Log.d(LOG_TAG, "Decipher Functname: " + decipherFunctionName);
 
                 Pattern patMainVariable = Pattern.compile("(var |\\s|,|;)" + decipherFunctionName.replace("$", "\\$") +
                         "(=function\\((.{1,3})\\)\\{)");
@@ -453,8 +442,6 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     }
                 }
 
-                if (LOGGING)
-                    Log.d(LOG_TAG, "Decipher Function: " + decipherFunctions);
                 decipherViaWebView(encSignatures);
                 if (CACHING) {
                     writeDeciperFunctToChache();
@@ -570,8 +557,6 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     public void onError(String errorMessage) {
                         lock.lock();
                         try {
-                            if (LOGGING)
-                                Log.e(LOG_TAG, errorMessage);
                             jsExecuting.signal();
                         } finally {
                             lock.unlock();

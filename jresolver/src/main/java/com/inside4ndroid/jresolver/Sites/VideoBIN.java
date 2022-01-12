@@ -57,16 +57,13 @@ public class VideoBIN {
     }
 
     private static ArrayList<Jmodel> parseVideo(String html){
-        Log.d("DEBUG ### ", " GETTING MATCH");
         ArrayList<Jmodel> jModels = new ArrayList<>();
         try {
-            Log.d("DEBUG ### ", " TRYING TO MATCH");
             String regex = "sources:(.*),";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(html);
             if (matcher.find()){
                 String source = matcher.group(1).trim();
-                Log.d("DEBUG ### ", " MATCH FOUND : "+source);
                 JSONArray array = new JSONArray(source);
                 List<String> list = new ArrayList<>();
                 for (int i=0;i<array.length();i++){
@@ -105,7 +102,6 @@ public class VideoBIN {
                 return null;
             }
         }
-        Log.d("THE URL ", url);
         return url;
     }
 }

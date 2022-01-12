@@ -23,7 +23,6 @@ public class Vidoza {
                     .getAsString(new StringRequestListener() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d("THE RESPONSE ", response);
                             ArrayList<Jmodel> jModels = parse(response);
                             if (jModels!=null) {
                                 onTaskCompleted.onTaskCompleted(jModels, false);
@@ -53,7 +52,6 @@ public class Vidoza {
                 return null;
             }
         }
-        Log.d("THE URL ", url);
         return url;
     }
 
@@ -64,9 +62,6 @@ public class Vidoza {
         if (matcher.find()) {
             Jmodel jModel = new Jmodel();
             jModel.setUrl(matcher.group(1));
-
-            System.out.println(matcher.group(1));
-
             jModel.setQuality("Normal");
             ArrayList<Jmodel> jModels = new ArrayList<>();
             jModels.add(jModel);

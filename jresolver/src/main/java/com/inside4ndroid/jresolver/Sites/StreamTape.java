@@ -39,12 +39,7 @@ public class StreamTape {
                             match1 = match1.replace("'", "");
                             match2 = match2.substring(3);
 
-                            Log.d("MATCH1 #####", match1);
-                            Log.d("MATCH2 #####", match2);
-
                             String src = "https:"+match1+match2+"&stream=1";
-
-                            Log.d("SOURCE #####", src.replaceAll("\\s+", ""));
 
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                             StrictMode.setThreadPolicy(policy);

@@ -50,6 +50,16 @@
                 23. StremSB\n
                 24. Mixdrop\n
                 25. GoUnlimited
+                26. Voxzer
+                27. AnaVidz
+                28. Aparat
+                29. Archive
+                30. Bitchute
+                31. Brighteon
+                32. DeadlyBlogger
+                33. Fansubs
+                34. Diasfem (formerly femax20)
+                35. GDStream
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
     <string name="quality">Quality!</string>
@@ -112,4 +122,25 @@
     <string name="mdrop"><![CDATA[https://mixdrop.co/e/vnr7den9sl11e8?sub1=https://msubload.com/sub/tom-clancys-without-remorse/tom-clancys-without-remorse.vtt&sub1_label=English]]></string>
     <string name="gounlimited">gounlimited</string>
     <string name="gounlimiteduri">https://gounlimited.to/embed-lps2khonhl4l.html</string>
+    <string name="voxzer_string">voxzer</string>
+    <string name="anavidz_btn">anavidz</string>
+    <string name="aparat_btn">aparat</string>
+    <string name="archive_btn">archive</string>
+    <string name="voxzer_uri">https://player.voxzer.org/view/691379d68d354fe6e71265e1</string>
+    <string name="anavidz_uri">https://anavidz.com:2096/embed-181bufggfrem.html</string>
+    <string name="aparat_uri">https://www.aparat.com/v/pH2vX</string>
+    <string name="archive_uri">https://archive.org/download/HitchcockTrailers/1935The39Steps_512kb.mp4</string>
+    <string name="bitchute_btn">bitchute</string>
+    <string name="brighteon_btn">brighteon</string>
+    <string name="deadlyblogger_btn">deadlyblogger</string>
+    <string name="fansubs_btn">fansubs</string>
+    <string name="diasfem_btn">diasfem</string>
+    <string name="gdstream_btn">gdstream</string>
+    <string name="gofile_btn">gofile</string>
+    <string name="bitchute">https://www.bitchute.com/video/bw21AnWYxVkP</string>
+    <string name="brighteon">https://www.brighteon.com/f0d6c463-827b-4150-83f4-69f5ae58ba1b</string>
+    <string name="deadlyblogger">http://www.deadlyblogger.com/NewRelease/dal1.mp4</string>
+    <string name="fansubs">https://fansubs.tv/watch/%D9%81%D9%8A%D9%84%D9%85-%D8%A8%D9%88%D8%AA%D8%B4%D8%A7%D9%86-bocchan-%D9%85%D8%AA%D8%B1%D8%AC%D9%85_mVPR9AtKsivDicb.html</string>
+    <string name="diasfem">https://diasfem.com/v/1lo6x-yglo5</string>
+    <string name="gdstream">https://gdstream.net/v/g3eela--z34lnkp</string>
 </resources>

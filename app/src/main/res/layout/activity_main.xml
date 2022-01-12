@@ -152,6 +152,34 @@
                         android:onClick="gounlimited"
                         android:text="@string/gounlimited"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="anavidz"
+                        android:text="@string/anavidz_btn"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="bitchute"
+                        android:text="@string/bitchute_btn"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="deadlyblogger"
+                        android:text="@string/deadlyblogger_btn"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="diasfem"
+                        android:text="@string/diasfem_btn"
+                        tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -243,6 +271,48 @@
                         android:layout_height="wrap_content"
                         android:onClick="streamsb"
                         android:text="@string/streamsbz"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="voxzer"
+                        android:text="@string/voxzer_string"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="aparat"
+                        android:text="@string/aparat_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="archive"
+                        android:text="@string/archive_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="brighteon"
+                        android:text="@string/brighteon_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="fansubs"
+                        android:text="@string/fansubs_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="gdstream"
+                        android:text="@string/gdstream_btn"
                         tools:ignore="UsingOnClickInXml" />
                 </LinearLayout>
 

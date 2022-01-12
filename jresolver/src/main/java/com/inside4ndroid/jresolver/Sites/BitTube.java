@@ -55,7 +55,6 @@ public class BitTube {
         try {
             JSONArray array = new JSONObject(html).getJSONArray("files");
             for (int i=0;i<array.length();i++){
-                System.out.println("BitTube => "+array.getJSONObject(i));
                 String label = array.getJSONObject(i).getJSONObject("resolution").getString("label");
                 String src = array.getJSONObject(i).getString("fileDownloadUrl");
                 if (label.length()>1) {
