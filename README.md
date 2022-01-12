@@ -29,17 +29,6 @@ Supported Sites/Hosts :
 22. Doodstream
 23. StremSB
 24. Mixdrop
-25. GoUnlimited
-26. Voxzer
-27. AnaVidz
-28. Aparat
-29. Archive
-30. Bitchute
-31. Brighteon
-32. DeadlyBlogger
-33. Fansubs
-34. Diasfem (formerly femax20)
-35. GDStream
 
 I will be adding more hosters over time and fixing any issues reported.
 
