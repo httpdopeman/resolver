@@ -19,7 +19,10 @@ import com.inside4ndroid.jresolver.Sites.FShared;
 import com.inside4ndroid.jresolver.Sites.FanSubs;
 import com.inside4ndroid.jresolver.Sites.Diasfem;
 import com.inside4ndroid.jresolver.Sites.GDStream;
+import com.inside4ndroid.jresolver.Sites.GUContent;
 import com.inside4ndroid.jresolver.Sites.GoUnlimited;
+import com.inside4ndroid.jresolver.Sites.HDVid;
+import com.inside4ndroid.jresolver.Sites.MediaShore;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
 import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
@@ -87,6 +90,9 @@ public class Jresolver {
     private final String fansubs = "https?:\\/\\/(www\\.)?(fansubs\\.tv)\\/(v|watch)\\/.+";
     private final String diasfem = ".+(diasfem\\.com)/v|f/.+";
     private final String gdstream = ".+(gdstream\\.net)/v|f/.+";
+    private final String googleusercontent = ".+(googleusercontent\\.com).+";
+    private final String hdvid = ".+(hdvid|vidhdthe)\\.(tv|fun|online)/.+";
+    private final String mediashore = ".+(mediashore\\.org)/v|f/.+";
 
     public Jresolver(@NonNull Context context){
         this.context=context;
@@ -96,6 +102,19 @@ public class Jresolver {
     public void find(String url){
         if (check(mp4upload, url)) {
             MP4Upload.fetch(url,onComplete);
+        } else if (check(mediashore,url)){
+            MediaShore.fetch(url,onComplete);
+        } else if (check(hdvid, url)) {
+            if(url.contains("embed")){
+                HDVid.fetch(url,onComplete);
+            } else {
+                String[] splits = url.split("/");
+                String ID = splits[splits.length-1];
+                String new_url = "https://hdvid.fun/embed-"+ID;
+                HDVid.fetch(new_url,onComplete);
+            }
+        }else if (check(googleusercontent, url)) {
+            GUContent.fetch(url,onComplete);
         } else if (check(sendvid, url)) {
             SendVid.fetch(url,onComplete);
         } else if (check(gdstream, url)) {

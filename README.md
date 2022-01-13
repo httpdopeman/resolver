@@ -40,6 +40,10 @@ Supported Sites/Hosts :
 33. Fansubs
 34. Diasfem (formerly femax20)
 35. GDStream
+36. Googleuserconent links (lh3.googleusercontent.com/mediaid)
+37. Hdvid
+38. Vidhdthe
+39. Mediashore
 
 I will be adding more hosters over time and fixing any issues reported.
 

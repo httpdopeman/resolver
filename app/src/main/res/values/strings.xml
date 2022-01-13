@@ -60,6 +60,10 @@
                 33. Fansubs
                 34. Diasfem (formerly femax20)
                 35. GDStream
+                36. Googleuserconent links (lh3.googleusercontent.com/mediaid)
+                37. Hdvid
+                38. Vidhdthe
+                39. Mediashore
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
     <string name="quality">Quality!</string>
@@ -143,4 +147,7 @@
     <string name="fansubs">https://fansubs.tv/watch/%D9%81%D9%8A%D9%84%D9%85-%D8%A8%D9%88%D8%AA%D8%B4%D8%A7%D9%86-bocchan-%D9%85%D8%AA%D8%B1%D8%AC%D9%85_mVPR9AtKsivDicb.html</string>
     <string name="diasfem">https://diasfem.com/v/1lo6x-yglo5</string>
     <string name="gdstream">https://gdstream.net/v/g3eela--z34lnkp</string>
+    <string name="googleusercontent_btn">googleusercontent</string>
+    <string name="hdvid_vidhdthe_btn">hdvid / vidhdthe</string>
+    <string name="mediashore_btn">mediashore</string>
 </resources>

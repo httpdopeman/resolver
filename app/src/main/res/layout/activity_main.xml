@@ -180,6 +180,20 @@
                         android:onClick="diasfem"
                         android:text="@string/diasfem_btn"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="googleusercontent"
+                        android:text="@string/googleusercontent_btn"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="mediashore"
+                        android:text="@string/mediashore_btn"
+                        tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -313,6 +327,13 @@
                         android:layout_height="wrap_content"
                         android:onClick="gdstream"
                         android:text="@string/gdstream_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="hdvid"
+                        android:text="@string/hdvid_vidhdthe_btn"
                         tools:ignore="UsingOnClickInXml" />
                 </LinearLayout>
 

@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
     public void fansubs(View view) {letGo(getString(R.string.fansubs),getString(R.string.fansubs));}
     public void diasfem(View view) {letGo(getString(R.string.diasfem),getString(R.string.diasfem));}
     public void gdstream(View view) {letGo(getString(R.string.gdstream),getString(R.string.gdstream));}
+    public void googleusercontent(View view) {letGo("https://lh3.googleusercontent.com/CoKseO5Jy1sOnPruoCWQ53ERsjG5ID5qQkjAehh8DIMt2M3PMWf8Gu_EKdQ9fRuD2NH50BVx90XRT1tMXB1HiKHPjvGzyTi-=m22", "https://google.com");}
+    public void hdvid(View view) {letGo("https://hdvid.tv/embed-6m7qujekpkmx.html","https://hdvid.tv/embed-6m7qujekpkmx.html");}
+    public void mediashore(View view) {letGo("https://mediashore.org/v/w7m74anl7mgzrj5","https://mediashore.org/v/w7m74anl7mgzrj5");}
 
     public boolean checkInternet() {
         boolean what;
