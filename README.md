@@ -44,6 +44,19 @@ Supported Sites/Hosts :
 37. Hdvid
 38. Vidhdthe
 39. Mediashore
+40. VoeSX
+41. GoMoPlayer
+42. EplayVid
+43. VidMoly
+44. Embedsito
+45. Lajkema
+46. GdStream
+47. Diasfem
+48. Suzihaza
+49. Superplayyxyz
+50. Dutrag
+51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
+52. Upstream
 
 I will be adding more hosters over time and fixing any issues reported.
 
