@@ -194,6 +194,27 @@
                         android:onClick="mediashore"
                         android:text="@string/mediashore_btn"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="gomoplayer"
+                        android:text="gomoplayer"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="eplayvid"
+                        android:text="@string/eplayvidbtn"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="midian"
+                        android:text="Midian.Appboxes (avi not supported)"
+                        tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -334,6 +355,27 @@
                         android:layout_height="wrap_content"
                         android:onClick="hdvid"
                         android:text="@string/hdvid_vidhdthe_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="voesx"
+                        android:text="@string/voesx_btn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="vidmoly"
+                        android:text="@string/vidmolybtn"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="upstream"
+                        android:text="UpStream"
                         tools:ignore="UsingOnClickInXml" />
                 </LinearLayout>
 

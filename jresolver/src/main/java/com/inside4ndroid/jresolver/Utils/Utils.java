@@ -1,7 +1,21 @@
 package com.inside4ndroid.jresolver.Utils;
 
+import static com.inside4ndroid.jresolver.Jresolver.agent;
+
+import android.os.StrictMode;
+import android.util.Base64;
+import android.util.Log;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Matcher;
@@ -54,5 +68,85 @@ public class Utils {
             return matcher.group(0);
         }
         return null;
+    }
+
+    public static String B64Encode(String text){
+        byte[] data = text.getBytes(StandardCharsets.UTF_8);
+        return Base64.encodeToString(data, Base64.DEFAULT).replace("=","");
+    }
+
+    public static String tokenCaptcha(String anchor,String SiteKey,String TheV) {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection.Response res = null;
+        try {
+            res = Jsoup.connect(anchor)
+                    .method(Connection.Method.GET)
+                    .timeout(15000)
+                    .execute();
+
+            Document doc = res.parse();
+            String token = doc.getElementById("recaptcha-token").val();
+            if (res.statusCode() == 200) {
+                Connection.Response res2 = null;
+                try {
+                    res2 = Jsoup.connect("https://www.google.com/recaptcha/api2/reload?k="+SiteKey)
+                            .ignoreContentType(true)
+                            .data("v", TheV)
+                            .data("reason", "q")
+                            .data("c", token)
+                            .header("Content-Type", "application/x-www-form-urlencoded")
+                            .method(Connection.Method.POST)
+                            .timeout(15000)
+                            .execute();
+
+                    if (res2.statusCode() == 200) {
+                        return res2.body().substring(res2.body().indexOf("rresp\",\"") + 8, res2.body().indexOf("\",null"));
+                    }
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static String GetV(String uri) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        Connection.Response res = null;
+        try {
+            res = Jsoup.connect(uri)
+                    .method(Connection.Method.GET)
+                    .timeout(15000)
+                    .execute();
+
+            Document doc = res.parse();
+
+            String regex = "releases/([^/]+)";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(doc.toString());
+            if (matcher.find()) {
+                return matcher.group(1);
+            }
+        } catch (Exception Error){
+            Error.printStackTrace();
+            return  null;
+        }
+
+        return null;
+    }
+
+    public static String getID(String data){
+        if(data.contains(".html")){
+            data = data.replace(".html" ,"");
+            return data.substring(data.lastIndexOf("/") + 1);
+        } else {
+            return data.substring(data.lastIndexOf("/") + 1);
+        }
     }
 }

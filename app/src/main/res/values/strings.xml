@@ -64,6 +64,19 @@
                 37. Hdvid
                 38. Vidhdthe
                 39. Mediashore
+                40. VoeSX
+                41. GoMoPlayer
+                42. EplayVid
+                43. VidMoly
+                44. Embedsito
+                45. Lajkema
+                46. GdStream
+                47. Diasfem
+                48. Suzihaza
+                49. Superplayyxyz
+                50. Dutrag
+                51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
+                52. Upstream
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
     <string name="quality">Quality!</string>
@@ -118,8 +131,8 @@
     <string name="about_menu">About</string>
     <string name="amazon">https://www.amazon.com/clouddrive/share/uTa9DESz4iQ6tqQRpS7xFE1WizJKa2pwQPXUs91ZC0g</string>
     <string name="doodstream">doodstream</string>
-    <string name="dood">https://dood.ws/e/6g87rk7ygunx</string>
-    <string name="streamsb">https://sbplay2.com/e/3zrkusdmkdem</string>
+    <string name="dood">https://dood.ws/e/8sbnxmwsy6cg</string>
+    <string name="streamsb">https://sbplay2.com/e/uvz1g6de3dtb</string>
     <string name="streamsbz">streamsb</string>
     <string name="amazon_drive">Amazon Drive</string>
     <string name="mixdrop">mixdrop</string>
@@ -150,4 +163,19 @@
     <string name="googleusercontent_btn">googleusercontent</string>
     <string name="hdvid_vidhdthe_btn">hdvid / vidhdthe</string>
     <string name="mediashore_btn">mediashore</string>
+    <string name="voesx_btn">voesx</string>
+    <string name="eplayvidbtn">EplayVid</string>
+    <string name="vidmolybtn">VidMoly</string>
+    <string name="gusercontent">https://lh3.googleusercontent.com/CoKseO5Jy1sOnPruoCWQ53ERsjG5ID5qQkjAehh8DIMt2M3PMWf8Gu_EKdQ9fRuD2NH50BVx90XRT1tMXB1HiKHPjvGzyTi-=m22</string>
+    <string name="google">https://google.com</string>
+    <string name="hdvid">https://hdvid.tv/embed-6m7qujekpkmx.html</string>
+    <string name="mediashore">https://mediashore.org/v/w7m74anl7mgzrj5</string>
+    <string name="voesx">https://voe.sx/e/icycuc25ewjj</string>
+    <string name="gomplayer">https://gomoplayer.com/7dpg3f4z1t33.html</string>
+    <string name="eplayvid">https://eplayvid.net/watch/f8907ab0d5b90cf</string>
+    <string name="vidmoly">https://vidmoly.me/vmvynw3hxpwu</string>
+    <string name="vidmolyref">https://vidmoly.to/</string>
+    <string name="midian">http://www.midian.appboxes.co/wolfyB/newmidian/Fitness/fitness1/Insanity%20Asylum/01%20-%20Speed%20and%20Agility.mp4</string>
+    <string name="upstream">https://upstream.to/eyzvd3q7sger</string>
+
 </resources>

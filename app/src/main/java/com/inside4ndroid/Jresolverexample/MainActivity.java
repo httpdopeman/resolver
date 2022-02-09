@@ -124,9 +124,15 @@ public class MainActivity extends AppCompatActivity {
     public void fansubs(View view) {letGo(getString(R.string.fansubs),getString(R.string.fansubs));}
     public void diasfem(View view) {letGo(getString(R.string.diasfem),getString(R.string.diasfem));}
     public void gdstream(View view) {letGo(getString(R.string.gdstream),getString(R.string.gdstream));}
-    public void googleusercontent(View view) {letGo("https://lh3.googleusercontent.com/CoKseO5Jy1sOnPruoCWQ53ERsjG5ID5qQkjAehh8DIMt2M3PMWf8Gu_EKdQ9fRuD2NH50BVx90XRT1tMXB1HiKHPjvGzyTi-=m22", "https://google.com");}
-    public void hdvid(View view) {letGo("https://hdvid.tv/embed-6m7qujekpkmx.html","https://hdvid.tv/embed-6m7qujekpkmx.html");}
-    public void mediashore(View view) {letGo("https://mediashore.org/v/w7m74anl7mgzrj5","https://mediashore.org/v/w7m74anl7mgzrj5");}
+    public void googleusercontent(View view) {letGo(getString(R.string.gusercontent), getString(R.string.google));}
+    public void hdvid(View view) {letGo(getString(R.string.hdvid),getString(R.string.hdvid));}
+    public void mediashore(View view) {letGo(getString(R.string.mediashore),getString(R.string.mediashore));}
+    public void voesx(View view) {letGo(getString(R.string.voesx), getString(R.string.voesx));}
+    public void gomoplayer(View view) {letGo(getString(R.string.gomplayer), getString(R.string.gomplayer));}
+    public void eplayvid(View view) {letGo(getString(R.string.eplayvid), getString(R.string.eplayvid));}
+    public void vidmoly(View view) {letGo(getString(R.string.vidmoly), getString(R.string.vidmolyref));}
+    public void midian(View view) {letGo(getString(R.string.midian), getString(R.string.google));}
+    public void upstream(View view) {letGo(getString(R.string.upstream), getString(R.string.upstream));}
 
     public boolean checkInternet() {
         boolean what;

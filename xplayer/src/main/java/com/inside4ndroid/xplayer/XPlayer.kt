@@ -43,13 +43,13 @@ class XPlayer : AppCompatActivity() {
             finish()
         }
 
-        mUrl = intent.getStringExtra(XPLAYER_URL)
+        mUrl = intent.getStringExtra(XPLAYER_URL).toString()
 
         if(intent.getStringExtra(XPLAYER_COOKIE)!=null) {
-            mCookie = intent.getStringExtra(XPLAYER_COOKIE)
+            mCookie = intent.getStringExtra(XPLAYER_COOKIE)!!
         }
         if(intent.getStringExtra(XPLAYER_REFERER)!=null) {
-            mReferer = intent.getStringExtra(XPLAYER_REFERER)
+            mReferer = intent.getStringExtra(XPLAYER_REFERER)!!
         }
 
         savedInstanceState?.let { videoPosition = savedInstanceState.getLong(XPLAYER_POSITION) }
@@ -207,7 +207,7 @@ class XPlayer : AppCompatActivity() {
         })
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         videoPosition = savedInstanceState!!.getLong(XPLAYER_POSITION)
     }

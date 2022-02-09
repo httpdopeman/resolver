@@ -1,6 +1,7 @@
 package com.inside4ndroid.jresolver;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -15,19 +16,25 @@ import com.inside4ndroid.jresolver.Sites.Brighteon;
 import com.inside4ndroid.jresolver.Sites.DMotion;
 import com.inside4ndroid.jresolver.Sites.DeadlyBlogger;
 import com.inside4ndroid.jresolver.Sites.Dood;
+import com.inside4ndroid.jresolver.Sites.EplayVid;
 import com.inside4ndroid.jresolver.Sites.FShared;
 import com.inside4ndroid.jresolver.Sites.FanSubs;
 import com.inside4ndroid.jresolver.Sites.Diasfem;
 import com.inside4ndroid.jresolver.Sites.GDStream;
 import com.inside4ndroid.jresolver.Sites.GUContent;
+import com.inside4ndroid.jresolver.Sites.GoMo;
 import com.inside4ndroid.jresolver.Sites.GoUnlimited;
 import com.inside4ndroid.jresolver.Sites.HDVid;
 import com.inside4ndroid.jresolver.Sites.MediaShore;
+import com.inside4ndroid.jresolver.Sites.Midian;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
 import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
+import com.inside4ndroid.jresolver.Sites.Upstream;
+import com.inside4ndroid.jresolver.Sites.VidMoly;
 import com.inside4ndroid.jresolver.Sites.VideoBIN;
 import com.inside4ndroid.jresolver.Sites.VideoBM;
+import com.inside4ndroid.jresolver.Sites.VoeSX;
 import com.inside4ndroid.jresolver.Sites.Voxzer;
 import com.inside4ndroid.jresolver.Sites.Vudeo;
 import com.inside4ndroid.jresolver.Sites.YT;
@@ -68,15 +75,15 @@ public class Jresolver {
     private final String youtube = "^((?:https?:)?\\/\\/)?((?:www|m)\\.)?((?:youtube\\.com|youtu.be))(\\/(?:[\\w\\-]+\\?v=|embed\\/|v\\/)?)([\\w\\-]+)(\\S+)?$";
     private final String solidfiles = "https?:\\/\\/(www\\.)?(solidfiles)\\.[^\\/,^\\.]{2,}\\/(v)\\/.+";
     private final String vidoza = "https?:\\/\\/(www\\.)?(vidoza)\\.[^\\/,^\\.]{2,}.+";
-    private final String fembed = "https?:\\/\\/(www\\.)?(fembed|vcdn|feurl|fcdn|embedsito|dutrag|lajkema|fembed-hd)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
+    private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
     private final String vidbm = "https?:\\/\\/(vidbam)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String bitTube = "https?:\\/\\/(www\\.)?(bittube\\.video\\/videos)\\/(watch|embed)\\/.+";
     private final String videoBIN = "https?:\\/\\/(videobin\\.co)\\/.+";
     private final String fourShared = "https?:\\/\\/(www\\.)?(4shared\\.com)\\/(video|web\\/embed)\\/.+";
-    private final String streamtape = "https?:\\/\\/(www\\.)?(streamtape\\.com)\\/(v)\\/.+";
+    private final String streamtape = "https?:\\/\\/(www\\.)?(streamtape\\.com)\\/(v|e)\\/.+";
     private final String vudeo = "https?:\\/\\/(www\\.)?(vudeo\\.net)\\/.+";
     private final String amazon = "https?:\\/\\/(www\\.)?(amazon\\.com)\\/?(clouddrive)\\/+";
-    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws))/(?:d|e)/([0-9a-zA-Z]+)";
+    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws|sh))/(?:d|e)/([0-9a-zA-Z]+)";
     private final String streamsb = ".+(streamsb|sbplay|sbplay2|sbembed|sbembed1|sbvideo|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb)\\.(com|net|one|org)/.+";
     private final String mixdrop = ".+(mixdrop)\\.(co|to|sx|bz)\\/.+";
     private final String gounlimited = "https?:\\/\\/(www\\.)?(gounlimited)\\.[^\\/,^\\.]{2,}\\/.+";
@@ -93,7 +100,13 @@ public class Jresolver {
     private final String googleusercontent = ".+(googleusercontent\\.com).+";
     private final String hdvid = ".+(hdvid|vidhdthe)\\.(tv|fun|online)/.+";
     private final String mediashore = ".+(mediashore\\.org)/v|f/.+";
-
+    private final String voesx = ".+(voe\\.sx).+";
+    private final String gomoplayer = ".+(gomoplayer\\\\.com).+";
+    private final String eplayvid = ".+(eplayvid)\\.(com|net)/.+";
+    private final String vidmoly = ".+(vidmoly)\\.(me)/.+";
+    private final String midian =  ".+(midian\\.appboxes)\\.(co)/.+";
+    private final String upstream = ".+(upstream)\\.(to)/.+"
+;
     public Jresolver(@NonNull Context context){
         this.context=context;
         AndroidNetworking.initialize(context);
@@ -102,6 +115,25 @@ public class Jresolver {
     public void find(String url){
         if (check(mp4upload, url)) {
             MP4Upload.fetch(url,onComplete);
+        } else if (check(vidmoly,url)){
+            VidMoly.fetch(url,onComplete);
+        } else if (check(upstream,url)){
+            Upstream.fetch(url,onComplete);
+        } else if (check(midian,url)){
+            Midian.fetch(url,onComplete);
+        } else if (check(eplayvid,url)){
+            EplayVid.fetch(url,onComplete);
+        }  else if (check(voesx, url)) {
+            VoeSX.fetch(url, onComplete);
+        } else if (check(gomoplayer, url)) {
+            if(!url.contains("embed")) {
+                String[] splits = url.split("/");
+                String ID = splits[splits.length-1];
+                String newurl = "https://gomoplayer.com/embed-"+ID;
+                GoMo.fetch(newurl, onComplete);
+            } else {
+                GoMo.fetch(url, onComplete);
+            }
         } else if (check(mediashore,url)){
             MediaShore.fetch(url,onComplete);
         } else if (check(hdvid, url)) {

@@ -21,6 +21,11 @@ import java.util.regex.Pattern;
 public class StreamTape {
 
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
+
+        if(url.contains("/e/")){
+            url = url.replace("/e/", "/v/");
+        }
+
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
                 .addHeaders("Referer", "https://streamtape.com/")
@@ -28,8 +33,13 @@ public class StreamTape {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
+                        Pattern pattern = null;
+                        if(response.contains("norobot")){
+                            pattern = Pattern.compile("ById\\('.+robot.+?=.*([\"']//[^;+]+).*'(.*?)'");
+                        } else {
+                            pattern = Pattern.compile("ById\\('?robot.+?=.*([\"']//[^;+]+).*'(.*?)'");
+                        }
 
-                        Pattern pattern = Pattern.compile("ById\\('.+?=.*([\"']//[^;+]+).*'(.*?)'");
                         Matcher matcher = pattern.matcher(response);
                         if (matcher.find()) {
 
@@ -40,7 +50,6 @@ public class StreamTape {
                             match2 = match2.substring(3);
 
                             String src = "https:"+match1+match2+"&stream=1";
-
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                             StrictMode.setThreadPolicy(policy);
                             try {

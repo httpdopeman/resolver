@@ -2,6 +2,8 @@ package com.inside4ndroid.jresolver.Sites;
 
 import static com.inside4ndroid.jresolver.Jresolver.agent;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
@@ -21,9 +23,7 @@ public class Dood {
     static String token;
     static boolean isLong;
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete) {
-
-
-
+        String ref = url;
 
         if(url.contains("LONG")){
             isLong = true;
@@ -33,11 +33,10 @@ public class Dood {
             url = url.replace("/d/", "/e/");
         }
 
-
-
         final String finalUrl = url;
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
+                .addHeaders("Referer", ref)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
