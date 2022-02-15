@@ -38,6 +38,7 @@ import com.inside4ndroid.jresolver.Sites.VoeSX;
 import com.inside4ndroid.jresolver.Sites.Voxzer;
 import com.inside4ndroid.jresolver.Sites.Vudeo;
 import com.inside4ndroid.jresolver.Sites.YT;
+import com.inside4ndroid.jresolver.Sites.YodBox;
 import com.inside4ndroid.jresolver.Utils.DailyMotionUtils;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Sites.FB;
@@ -75,7 +76,7 @@ public class Jresolver {
     private final String youtube = "^((?:https?:)?\\/\\/)?((?:www|m)\\.)?((?:youtube\\.com|youtu.be))(\\/(?:[\\w\\-]+\\?v=|embed\\/|v\\/)?)([\\w\\-]+)(\\S+)?$";
     private final String solidfiles = "https?:\\/\\/(www\\.)?(solidfiles)\\.[^\\/,^\\.]{2,}\\/(v)\\/.+";
     private final String vidoza = "https?:\\/\\/(www\\.)?(vidoza)\\.[^\\/,^\\.]{2,}.+";
-    private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
+    private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza|streamm4u)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
     private final String vidbm = "https?:\\/\\/(vidbam)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String bitTube = "https?:\\/\\/(www\\.)?(bittube\\.video\\/videos)\\/(watch|embed)\\/.+";
     private final String videoBIN = "https?:\\/\\/(videobin\\.co)\\/.+";
@@ -95,18 +96,19 @@ public class Jresolver {
     private final String brighteon = ".+(brighteon\\.com).+";
     private final String deadlyblogger = ".+(deadlyblogger\\.com).+";
     private final String fansubs = "https?:\\/\\/(www\\.)?(fansubs\\.tv)\\/(v|watch)\\/.+";
-    private final String diasfem = ".+(diasfem\\.com)/v|f/.+";
+    private final String diasfem = ".+(diasfem\\.com|suzihaza)/v|f/.+";
     private final String gdstream = ".+(gdstream\\.net)/v|f/.+";
     private final String googleusercontent = ".+(googleusercontent\\.com).+";
     private final String hdvid = ".+(hdvid|vidhdthe)\\.(tv|fun|online)/.+";
     private final String mediashore = ".+(mediashore\\.org)/v|f/.+";
     private final String voesx = ".+(voe\\.sx).+";
-    private final String gomoplayer = ".+(gomoplayer\\\\.com).+";
+    private final String gomoplayer = ".+(gomoplayer\\.com).+";
     private final String eplayvid = ".+(eplayvid)\\.(com|net)/.+";
     private final String vidmoly = ".+(vidmoly)\\.(me)/.+";
     private final String midian =  ".+(midian\\.appboxes)\\.(co)/.+";
-    private final String upstream = ".+(upstream)\\.(to)/.+"
-;
+    private final String upstream = ".+(upstream)\\.(to)/.+";
+    private final String yodbox = ".+(yodbox)\\.(com)/.+";
+
     public Jresolver(@NonNull Context context){
         this.context=context;
         AndroidNetworking.initialize(context);
@@ -117,6 +119,8 @@ public class Jresolver {
             MP4Upload.fetch(url,onComplete);
         } else if (check(vidmoly,url)){
             VidMoly.fetch(url,onComplete);
+        } else if (check(yodbox,url)){
+            YodBox.fetch(url,onComplete);
         } else if (check(upstream,url)){
             Upstream.fetch(url,onComplete);
         } else if (check(midian,url)){
@@ -129,7 +133,7 @@ public class Jresolver {
             if(!url.contains("embed")) {
                 String[] splits = url.split("/");
                 String ID = splits[splits.length-1];
-                String newurl = "https://gomoplayer.com/embed-"+ID;
+                String newurl = "https://gomoplayer.com/embed-"+ID+".html";
                 GoMo.fetch(newurl, onComplete);
             } else {
                 GoMo.fetch(url, onComplete);

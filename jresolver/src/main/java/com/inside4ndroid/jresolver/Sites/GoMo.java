@@ -3,6 +3,8 @@ package com.inside4ndroid.jresolver.Sites;
 import static com.inside4ndroid.jresolver.Jresolver.agent;
 import static com.inside4ndroid.jresolver.Utils.Utils.putModel;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
@@ -52,19 +54,19 @@ public class GoMo {
         Pattern pattern = Pattern.compile("eval\\(function\\(p,a,c,k,e,d\\)(.*?)split");
         Matcher matcher = pattern.matcher(html);
         while (matcher.find()) {
-            String jsPacked = "eval(function(p,a,c,k,e,d)"+matcher.group(1)+"split('|'),0,{}))";
-
-            if(jsPacked.contains("MDCore")){
-                JSUnpacker jsUnpacker = new JSUnpacker(jsPacked);
+            String jsPacked = "eval(function(p,a,c,k,e,d)"+matcher.group(1)+"split('|')))";
+             JSUnpacker jsUnpacker = new JSUnpacker(jsPacked);
                 String Unpacked = jsUnpacker.unpack();
-                pattern = Pattern.compile("wurl=\"(.*?)\";");
+                pattern = Pattern.compile("file:\"(.*?)\"");
                 matcher = pattern.matcher(Unpacked);
                 while (matcher.find()) {
-                    String final_string = "https:"+matcher.group(1);
-                    return final_string;
-                }
-            }
+                    if(matcher.group(1).contains("http")){
+                        return matcher.group(1);
+                    } else {
+                        return "https:"+matcher.group(1);
+                    }
 
+                }
         }
         return null;
     }

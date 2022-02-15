@@ -1,7 +1,5 @@
 package com.inside4ndroid.jresolver.yt;
 
-//import android.support.annotation.NonNull;
-
 import androidx.annotation.NonNull;
 
 public class Format {

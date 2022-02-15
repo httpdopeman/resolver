@@ -213,7 +213,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="midian"
-                        android:text="Midian.Appboxes (avi not supported)"
+                        android:text="@string/midian_appboxes_avi_not_supported"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="yodbox"
+                        android:text="@string/yobox_btn"
                         tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 

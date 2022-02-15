@@ -1,5 +1,6 @@
 package com.inside4ndroid.jresolver.Sites;
 
+import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
 import static com.inside4ndroid.jresolver.Utils.Utils.sortMe;
 
 import com.androidnetworking.AndroidNetworking;
@@ -24,6 +25,7 @@ public class Diasfem {
 
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
         final String id = get_fEmbed_video_ID(url);
+        final String domain = getDomainFromURL(url);
 
         if (id!=null) {
             AndroidNetworking.get(url)
@@ -32,7 +34,7 @@ public class Diasfem {
                         @Override
                         public void onResponse(Response response) {
 
-                            AndroidNetworking.post("https://diasfem.com/api/source/"+id)
+                            AndroidNetworking.post(domain+"/api/source/"+id)
                                     .build()
                                     .getAsString(new StringRequestListener() {
                                         @Override

@@ -58,7 +58,7 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
     private final Lock lock = new ReentrantLock();
     private final Condition jsExecuting = lock.newCondition();
 
-    private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36";
+    private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.98 Safari/537.36";
 
     private static final Pattern patYouTubePageLink = Pattern.compile("(http|https)://(www\\.|m.|)youtube\\.com/watch\\?v=(.+?)( |\\z|&)");
     private static final Pattern patYouTubeShortLink = Pattern.compile("(http|https)://(www\\.|)youtu.be/(.+?)( |\\z|&)");
@@ -232,6 +232,14 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
             for (int i = 0; i < formats.length(); i++) {
 
                 JSONObject format = formats.getJSONObject(i);
+
+                // FORMAT_STREAM_TYPE_OTF(otf=1) requires downloading the init fragment (adding
+                // `&sq=0` to the URL) and parsing emsg box to determine the number of fragment that
+                // would subsequently requested with (`&sq=N`) (cf. youtube-dl)
+                String type = format.optString("type");
+                if (type != null && type.equals("FORMAT_STREAM_TYPE_OTF"))
+                    continue;
+
                 int itag = format.getInt("itag");
 
                 if (FORMAT_MAP.get(itag) != null) {
@@ -256,6 +264,11 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
             for (int i = 0; i < adaptiveFormats.length(); i++) {
 
                 JSONObject adaptiveFormat = adaptiveFormats.getJSONObject(i);
+
+                String type = adaptiveFormat.optString("type");
+                if (type != null && type.equals("FORMAT_STREAM_TYPE_OTF"))
+                    continue;
+
                 int itag = adaptiveFormat.getInt("itag");
 
                 if (FORMAT_MAP.get(itag) != null) {
@@ -286,6 +299,8 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     videoDetails.getBoolean("isLiveContent"),
                     videoDetails.getString("shortDescription"));
 
+        } else {
+            Log.d(LOG_TAG, "ytPlayerResponse was not found");
         }
 
         if (encSignatures.size() > 0) {
@@ -308,6 +323,9 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 }
                 decipherJsFileName = curJsFileName;
             }
+
+            if (LOGGING)
+                Log.d(LOG_TAG, "Decipher signatures: " + encSignatures.size() + ", videos: " + ytFiles.size());
 
             String signature;
             decipheredSignature = null;
@@ -336,6 +354,8 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         }
 
         if (ytFiles.size() == 0) {
+            if (LOGGING)
+                Log.d(LOG_TAG, pageHtml);
             return null;
         }
 
@@ -367,9 +387,13 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 urlConnection.disconnect();
             }
 
+            if (LOGGING)
+                Log.d(LOG_TAG, "Decipher FunctURL: " + decipherFunctUrl);
             Matcher mat = patSignatureDecFunction.matcher(javascriptFile);
             if (mat.find()) {
                 decipherFunctionName = mat.group(1);
+                if (LOGGING)
+                    Log.d(LOG_TAG, "Decipher Functname: " + decipherFunctionName);
 
                 Pattern patMainVariable = Pattern.compile("(var |\\s|,|;)" + decipherFunctionName.replace("$", "\\$") +
                         "(=function\\((.{1,3})\\)\\{)");
@@ -442,6 +466,8 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     }
                 }
 
+                if (LOGGING)
+                    Log.d(LOG_TAG, "Decipher Function: " + decipherFunctions);
                 decipherViaWebView(encSignatures);
                 if (CACHING) {
                     writeDeciperFunctToChache();
@@ -557,6 +583,8 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     public void onError(String errorMessage) {
                         lock.lock();
                         try {
+                            if (LOGGING)
+                                Log.e(LOG_TAG, errorMessage);
                             jsExecuting.signal();
                         } finally {
                             lock.unlock();

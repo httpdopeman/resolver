@@ -57,6 +57,7 @@ Supported Sites/Hosts :
 50. Dutrag
 51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
 52. Upstream
+53. YodBox
 
 I will be adding more hosters over time and fixing any issues reported.
 
@@ -79,7 +80,7 @@ I will be adding more hosters over time and fixing any issues reported.
 <pre>
 <code>
 dependencies {  <font></font>
-	implementation 'com.github.Inside4ndroid:resolver:6.4'<font></font>
+	implementation 'com.github.Inside4ndroid:resolver:6.5'<font></font>
 }<font></font>
 </code>
 </pre>

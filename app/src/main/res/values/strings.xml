@@ -49,39 +49,41 @@
                 22. Doodstream\n
                 23. StremSB\n
                 24. Mixdrop\n
-                25. GoUnlimited
-                26. Voxzer
-                27. AnaVidz
-                28. Aparat
-                29. Archive
-                30. Bitchute
-                31. Brighteon
-                32. DeadlyBlogger
-                33. Fansubs
-                34. Diasfem (formerly femax20)
-                35. GDStream
-                36. Googleuserconent links (lh3.googleusercontent.com/mediaid)
-                37. Hdvid
-                38. Vidhdthe
-                39. Mediashore
-                40. VoeSX
-                41. GoMoPlayer
-                42. EplayVid
-                43. VidMoly
-                44. Embedsito
-                45. Lajkema
-                46. GdStream
-                47. Diasfem
-                48. Suzihaza
-                49. Superplayyxyz
-                50. Dutrag
-                51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
-                52. Upstream
+                25. GoUnlimited\n
+                26. Voxzer\n
+                27. AnaVidz\n
+                28. Aparat\n
+                29. Archive\n
+                30. Bitchute\n
+                31. Brighteon\n
+                32. DeadlyBlogger\n
+                33. Fansubs\n
+                34. Diasfem (formerly femax20)\n
+                35. GDStream\n
+                36. Googleuserconent links (lh3.googleusercontent.com/mediaid)\n
+                37. Hdvid\n
+                38. Vidhdthe\n
+                39. Mediashore\n
+                40. VoeSX\n
+                41. GoMoPlayer\n
+                42. EplayVid\n
+                43. VidMoly\n
+                44. Embedsito\n
+                45. Lajkema\n
+                46. GdStream\n
+                47. Diasfem\n
+                48. Suzihaza\n
+                49. Superplayyxyz\n
+                50. Dutrag\n
+                51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)\n
+                52. Upstream\n
+                53. YodBox
+
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
     <string name="quality">Quality!</string>
     <string name="s_mp4upload">https://www.mp4upload.com/ct5j6f6hn1fk</string>
-    <string name="s_gphotos" tools:ignore="Typos">https://photos.google.com/share/AF1QipMkSCF43RzZEXWyGNMYWHCegzCgdW5ao_qJEBVZ8SPkS2IQmHZFz4a13PfAZGgvUQ/photo/AF1QipNnj95SaWHJca-Q8rUxzuRkYxX6UmnDSVykJhhw?key=dGhiZnl1SURYZmRhcFF0OVdueEk2TEtDWG9pb0J3</string>
+    <string name="s_gphotos" tools:ignore="Typos">https://photos.google.com/share/AF1QipPWmdX9jBMaoK4NbKYcjWrehnb6V2XCB1MUTtEIzzD-5PRmmQAcy3ZO-EZetY89CA/photo/AF1QipOxfyEdP3dVS3JVLVeDsznV1BpRqjbzbWzsAN_L?key=VnlwaU9GNDNVWDM3SW1NU28zZ3Bpc1RXOXAyTlF3</string>
     <string name="s_facebook">317455892574677</string>
     <string name="s_mediafire">http://www.mediafire.com/file/i8sjfas751yknlm/PaO_Ma_Lay_%255BOfficial_MV%255D_-_%25281080P_HD%2529.mp4/file</string>
     <string name="s_okru" tools:ignore="Typos">https://ok.ru/video/947875089023</string>
@@ -91,12 +93,12 @@
     <string name="s_solidfiles">http://www.solidfiles.com/v/PAwwxGvgqd5VX</string>
     <string name="s_vidoza">https://vidoza.net/s7poulhc6yax.html</string>
     <string name="s_sendvid">http://sendvid.com/3bh9588j</string>
-    <string name="s_fembed">https://www.fembed.com/v/53k5qudgx48m08g</string>
-    <string name="s_filerio">https://filerio.in/gm9926c3jxvb</string>
-    <string name="s_dailymotion">https://www.dailymotion.com/video/xyt1t1</string>
+    <string name="s_fembed">https://streamm4u.club/f/lnm8-in6z7wxwjk</string>
+    <string name="s_filerio">https://filerio.in/rpnqt5c8j104</string>
+    <string name="s_dailymotion">https://www.dailymotion.com/video/x7v8vg5</string>
     <string name="s_vidbam">https://vidbam.org/n27dkro8fo8v.html</string>
     <string name="s_bittube" tools:ignore="TypographyDashes">https://bittube.video/videos/watch/8e02be96-fa09-4309-a469-3c74c945182b</string>
-    <string name="s_videobin">https://videobin.co/v4mmc3lcdekg</string>
+    <string name="s_videobin">https://videobin.co/l9guhqs8x3a9</string>
     <string name="s_fourshared">https://www.4shared.com/video/bLza9r9mea/45016068_2204489923208618_5254.html</string>
     <string name="s_streamtape">https://streamtape.com/v/qxo3gv62r7UzmWv/splash.mp4</string>
     <string name="s_vudeo">https://vudeo.net/azhfxfpzq6yq.html</string>
@@ -158,7 +160,7 @@
     <string name="brighteon">https://www.brighteon.com/f0d6c463-827b-4150-83f4-69f5ae58ba1b</string>
     <string name="deadlyblogger">http://www.deadlyblogger.com/NewRelease/dal1.mp4</string>
     <string name="fansubs">https://fansubs.tv/watch/%D9%81%D9%8A%D9%84%D9%85-%D8%A8%D9%88%D8%AA%D8%B4%D8%A7%D9%86-bocchan-%D9%85%D8%AA%D8%B1%D8%AC%D9%85_mVPR9AtKsivDicb.html</string>
-    <string name="diasfem">https://diasfem.com/v/1lo6x-yglo5</string>
+    <string name="diasfem">https://suzihaza.com/v/1lo6x-yglo5</string>
     <string name="gdstream">https://gdstream.net/v/g3eela--z34lnkp</string>
     <string name="googleusercontent_btn">googleusercontent</string>
     <string name="hdvid_vidhdthe_btn">hdvid / vidhdthe</string>
@@ -171,11 +173,14 @@
     <string name="hdvid">https://hdvid.tv/embed-6m7qujekpkmx.html</string>
     <string name="mediashore">https://mediashore.org/v/w7m74anl7mgzrj5</string>
     <string name="voesx">https://voe.sx/e/icycuc25ewjj</string>
-    <string name="gomplayer">https://gomoplayer.com/7dpg3f4z1t33.html</string>
+    <string name="gomplayer">https://gomoplayer.com/7dpg3f4z1t33</string>
     <string name="eplayvid">https://eplayvid.net/watch/f8907ab0d5b90cf</string>
     <string name="vidmoly">https://vidmoly.me/vmvynw3hxpwu</string>
     <string name="vidmolyref">https://vidmoly.to/</string>
     <string name="midian">http://www.midian.appboxes.co/wolfyB/newmidian/Fitness/fitness1/Insanity%20Asylum/01%20-%20Speed%20and%20Agility.mp4</string>
     <string name="upstream">https://upstream.to/eyzvd3q7sger</string>
+    <string name="midian_appboxes_avi_not_supported">Midian.Appboxes (avi not supported)</string>
+    <string name="yobox_btn">yobox</string>
+    <string name="yodbox">https://yodbox.com/817f0xzn88lr.html</string>
 
 </resources>

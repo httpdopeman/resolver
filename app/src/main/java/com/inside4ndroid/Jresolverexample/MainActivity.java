@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
     public void vidmoly(View view) {letGo(getString(R.string.vidmoly), getString(R.string.vidmolyref));}
     public void midian(View view) {letGo(getString(R.string.midian), getString(R.string.google));}
     public void upstream(View view) {letGo(getString(R.string.upstream), getString(R.string.upstream));}
+    public void yodbox(View view) {letGo(getString(R.string.yodbox), getString(R.string.yodbox));}
 
     public boolean checkInternet() {
         boolean what;

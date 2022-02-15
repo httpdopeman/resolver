@@ -1,5 +1,7 @@
 package com.inside4ndroid.jresolver.Sites;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;

@@ -79,6 +79,7 @@ public class StreamSB {
                                     .getAsString(new StringRequestListener() {
                                         @Override
                                         public void onResponse(String response) {
+                                            System.out.print(response);
                                             try {
                                                 M3UPlaylist plist = new M3UParser().parseFile(response);
                                                 ArrayList<M3UItem> array = plist.getPlaylistItems();
@@ -112,7 +113,7 @@ public class StreamSB {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        anError.printStackTrace();
                     }
                 });
 
@@ -129,7 +130,7 @@ public class StreamSB {
         String LastPart1 = asciiTObinary(LastPart);
         String L2hex = binaryTOhex(LastPart1);
 
-        return HOST+"/sourcesx38/"+L1hex+"/"+L2hex;
+        return HOST+"/sources40/"+L1hex+"/"+L2hex;
     }
 
     private static String makeid() {

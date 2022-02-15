@@ -5,6 +5,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
+import com.inside4ndroid.jresolver.Utils.HttpsTrustManager;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -12,13 +13,23 @@ import java.util.regex.Pattern;
 
 import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
 
+import android.content.Context;
 import android.util.Log;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.CertificateException;
+import javax.security.cert.X509Certificate;
+
 public class Vidoza {
-    public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){
+    public static void fetch( String url, final Jresolver.OnTaskCompleted onTaskCompleted){
+
         url = fixURL(url);
         if (url!=null) {
             AndroidNetworking.get(url)
+                    .setOkHttpClient(HttpsTrustManager.getUnsafeOkHttpClient())
                     .build()
                     .getAsString(new StringRequestListener() {
                         @Override
@@ -31,6 +42,7 @@ public class Vidoza {
 
                         @Override
                         public void onError(ANError anError) {
+                            anError.printStackTrace();
                             onTaskCompleted.onError();
                         }
                     });
@@ -57,7 +69,7 @@ public class Vidoza {
 
     private static ArrayList<Jmodel> parse(String response){
 
-        final Pattern pattern = Pattern.compile("src.*?\"(.*?)\",", Pattern.MULTILINE);
+        final Pattern pattern = Pattern.compile("src\\s*:\\s*[\"']([^\"']+)", Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(response);
         if (matcher.find()) {
             Jmodel jModel = new Jmodel();

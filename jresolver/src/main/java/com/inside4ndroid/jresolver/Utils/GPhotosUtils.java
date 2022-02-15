@@ -1,5 +1,6 @@
 package com.inside4ndroid.jresolver.Utils;
 
+import android.util.Log;
 import android.webkit.CookieManager;
 
 import com.inside4ndroid.jresolver.Model.Jmodel;
@@ -85,6 +86,7 @@ public class GPhotosUtils {
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(string);
         if (matcher.find()) {
+
             String url = matcher.group(0).replace("\"","");
             return url;
         }
