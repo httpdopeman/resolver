@@ -58,6 +58,8 @@ Supported Sites/Hosts :
 51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
 52. Upstream
 53. YodBox
+54. Evoload
+55. CloudVideo
 
 I will be adding more hosters over time and fixing any issues reported.
 
@@ -80,7 +82,7 @@ I will be adding more hosters over time and fixing any issues reported.
 <pre>
 <code>
 dependencies {  <font></font>
-	implementation 'com.github.Inside4ndroid:resolver:6.5'<font></font>
+	implementation 'com.github.Inside4ndroid:resolver:6.6'<font></font>
 }<font></font>
 </code>
 </pre>
