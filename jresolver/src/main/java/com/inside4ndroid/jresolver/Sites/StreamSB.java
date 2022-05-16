@@ -130,7 +130,7 @@ public class StreamSB {
         String LastPart1 = asciiTObinary(LastPart);
         String L2hex = binaryTOhex(LastPart1);
 
-        return HOST+"/sources40/"+L1hex+"/"+L2hex;
+        return HOST+"/sources43/"+L1hex+"/"+L2hex;
     }
 
     private static String makeid() {

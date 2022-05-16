@@ -134,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
     public void midian(View view) {letGo(getString(R.string.midian), getString(R.string.google));}
     public void upstream(View view) {letGo(getString(R.string.upstream), getString(R.string.upstream));}
     public void yodbox(View view) {letGo(getString(R.string.yodbox), getString(R.string.yodbox));}
+    public void evoload(View view) {letGo(getString(R.string.evoload), getString(R.string.evoload_ref));}
+    public void cloudvideo(View view) {letGo("https://cloudvideo.tv/3yi0uhsf3yic", "https://cloudvideo.tv");}
 
     public boolean checkInternet() {
         boolean what;

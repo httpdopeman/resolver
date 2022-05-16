@@ -21,7 +21,7 @@ public class MFire {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        final String regex = "aria-label=\"Download file\"\\n.+href=\"(.*)\"";
+                        final String regex = "aria-label=\"Download file\"[^.*]href=\"(.*?)\"";
                         final Pattern pattern = Pattern.compile(regex);
                         final Matcher matcher = pattern.matcher(response);
                         if (matcher.find()) {

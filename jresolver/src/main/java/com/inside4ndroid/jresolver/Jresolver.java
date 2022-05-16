@@ -2,6 +2,7 @@ package com.inside4ndroid.jresolver;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -13,10 +14,12 @@ import com.inside4ndroid.jresolver.Sites.Archive;
 import com.inside4ndroid.jresolver.Sites.BitChute;
 import com.inside4ndroid.jresolver.Sites.BitTube;
 import com.inside4ndroid.jresolver.Sites.Brighteon;
+import com.inside4ndroid.jresolver.Sites.CloudVideo;
 import com.inside4ndroid.jresolver.Sites.DMotion;
 import com.inside4ndroid.jresolver.Sites.DeadlyBlogger;
 import com.inside4ndroid.jresolver.Sites.Dood;
 import com.inside4ndroid.jresolver.Sites.EplayVid;
+import com.inside4ndroid.jresolver.Sites.EvoLoad;
 import com.inside4ndroid.jresolver.Sites.FShared;
 import com.inside4ndroid.jresolver.Sites.FanSubs;
 import com.inside4ndroid.jresolver.Sites.Diasfem;
@@ -84,7 +87,7 @@ public class Jresolver {
     private final String streamtape = "https?:\\/\\/(www\\.)?(streamtape\\.com)\\/(v|e)\\/.+";
     private final String vudeo = "https?:\\/\\/(www\\.)?(vudeo\\.net)\\/.+";
     private final String amazon = "https?:\\/\\/(www\\.)?(amazon\\.com)\\/?(clouddrive)\\/+";
-    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws|sh))/(?:d|e)/([0-9a-zA-Z]+)";
+    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws|sh|pm))/(?:d|e)/([0-9a-zA-Z]+)";
     private final String streamsb = ".+(streamsb|sbplay|sbplay2|sbembed|sbembed1|sbvideo|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb)\\.(com|net|one|org)/.+";
     private final String mixdrop = ".+(mixdrop)\\.(co|to|sx|bz)\\/.+";
     private final String gounlimited = "https?:\\/\\/(www\\.)?(gounlimited)\\.[^\\/,^\\.]{2,}\\/.+";
@@ -101,13 +104,15 @@ public class Jresolver {
     private final String googleusercontent = ".+(googleusercontent\\.com).+";
     private final String hdvid = ".+(hdvid|vidhdthe)\\.(tv|fun|online)/.+";
     private final String mediashore = ".+(mediashore\\.org)/v|f/.+";
-    private final String voesx = ".+(voe\\.sx).+";
+    private final String voesx = ".+(voe\\.sx|voe-unblock\\.com).+";
     private final String gomoplayer = ".+(gomoplayer\\.com).+";
     private final String eplayvid = ".+(eplayvid)\\.(com|net)/.+";
     private final String vidmoly = ".+(vidmoly)\\.(me)/.+";
     private final String midian =  ".+(midian\\.appboxes)\\.(co)/.+";
     private final String upstream = ".+(upstream)\\.(to)/.+";
     private final String yodbox = ".+(yodbox)\\.(com)/.+";
+    private final String evoload = ".+(evoload)\\.(io)/.+";
+    private final String cloudvideo = ".+(cloudvideo)\\.(tv)/.+";
 
     public Jresolver(@NonNull Context context){
         this.context=context;
@@ -119,6 +124,10 @@ public class Jresolver {
             MP4Upload.fetch(url,onComplete);
         } else if (check(vidmoly,url)){
             VidMoly.fetch(url,onComplete);
+        } else if (check(evoload,url)){
+            EvoLoad.fetch(url,onComplete);
+        } else if (check(cloudvideo,url)){
+            CloudVideo.fetch(url,onComplete);
         } else if (check(yodbox,url)){
             YodBox.fetch(url,onComplete);
         } else if (check(upstream,url)){

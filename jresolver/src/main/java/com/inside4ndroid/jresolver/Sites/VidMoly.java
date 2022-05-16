@@ -18,7 +18,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class VidMoly {
+
+    private static String HOST;
+
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete) {
+
+        HOST = Utils.getDomainFromURL(url);
 
         url = fixURL(url);
         AndroidNetworking.get(url)
@@ -31,20 +36,20 @@ public class VidMoly {
                         final Matcher matcher = pattern.matcher(response);
                         if (matcher.find()) {
                             AndroidNetworking.get(matcher.group(1))
-                                    .addHeaders("Referer", "https://vidmoly.to/")
+                                    .addHeaders("Referer", HOST)
                                     .build()
                                     .getAsString(new StringRequestListener() {
                                         @Override
                                         public void onResponse(String response1) {
                                             //RESOLUTION.*x(.*?),.*[\s\S]http(.*?)[\s\S]8
-                                            String regex = "RESOLUTION.*x(.*?),.*[\\s\\S]http(.*?)8";
+                                            String regex = "RESOLUTION.*x(.*?),.*[\\s\\S]http(.*?)m3u8";
                                             Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
                                             Matcher matcher = pattern.matcher(response1);
 
                                             ArrayList<Jmodel> jModels = new ArrayList<>();
                                             while (matcher.find()) {
                                                 Jmodel jModel = new Jmodel();
-                                                jModel.setUrl("http"+matcher.group(2)+"8");
+                                                jModel.setUrl("http"+matcher.group(2)+"m3u8");
                                                 jModel.setQuality(matcher.group(1)+"p");
                                                 jModels.add(jModel);
                                             }

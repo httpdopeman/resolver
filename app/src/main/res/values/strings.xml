@@ -91,16 +91,16 @@
     <string name="s_twitter">https://twitter.com/i/status/1115097302920847363</string>
     <string name="s_youtube">https://www.youtube.com/watch?v=O6Xu-9mhCQ0</string>
     <string name="s_solidfiles">http://www.solidfiles.com/v/PAwwxGvgqd5VX</string>
-    <string name="s_vidoza">https://vidoza.net/s7poulhc6yax.html</string>
+    <string name="s_vidoza">https://vidoza.net/09hbo7xn4m92.html</string>
     <string name="s_sendvid">http://sendvid.com/3bh9588j</string>
-    <string name="s_fembed">https://streamm4u.club/f/lnm8-in6z7wxwjk</string>
-    <string name="s_filerio">https://filerio.in/rpnqt5c8j104</string>
+    <string name="s_fembed">https://streamm4u.club/v/lnm8-in-jgqj8j3</string>
+    <string name="s_filerio">https://filerio.in/4whe4wqa3cwq</string>
     <string name="s_dailymotion">https://www.dailymotion.com/video/x7v8vg5</string>
     <string name="s_vidbam">https://vidbam.org/n27dkro8fo8v.html</string>
     <string name="s_bittube" tools:ignore="TypographyDashes">https://bittube.video/videos/watch/8e02be96-fa09-4309-a469-3c74c945182b</string>
-    <string name="s_videobin">https://videobin.co/l9guhqs8x3a9</string>
+    <string name="s_videobin">https://videobin.co/iz379ynywl98</string>
     <string name="s_fourshared">https://www.4shared.com/video/bLza9r9mea/45016068_2204489923208618_5254.html</string>
-    <string name="s_streamtape">https://streamtape.com/v/qxo3gv62r7UzmWv/splash.mp4</string>
+    <string name="s_streamtape" tools:ignore="TypographyDashes">https://streamtape.com/v/kvZZaDx89Wira4/2022–03–13_18-59-40.mp4</string>
     <string name="s_vudeo">https://vudeo.net/azhfxfpzq6yq.html</string>
     <string name="no_connection">No internet connection!</string>
     <string name="congrats">Congratulations!</string>
@@ -172,15 +172,18 @@
     <string name="google">https://google.com</string>
     <string name="hdvid">https://hdvid.tv/embed-6m7qujekpkmx.html</string>
     <string name="mediashore">https://mediashore.org/v/w7m74anl7mgzrj5</string>
-    <string name="voesx">https://voe.sx/e/icycuc25ewjj</string>
+    <string name="voesx">https://voe-unblock.com/icycuc25ewjj</string>
     <string name="gomplayer">https://gomoplayer.com/7dpg3f4z1t33</string>
     <string name="eplayvid">https://eplayvid.net/watch/f8907ab0d5b90cf</string>
     <string name="vidmoly">https://vidmoly.me/vmvynw3hxpwu</string>
     <string name="vidmolyref">https://vidmoly.to/</string>
     <string name="midian">http://www.midian.appboxes.co/wolfyB/newmidian/Fitness/fitness1/Insanity%20Asylum/01%20-%20Speed%20and%20Agility.mp4</string>
-    <string name="upstream">https://upstream.to/eyzvd3q7sger</string>
+    <string name="upstream">https://upstream.to/1a1zn6jxw3t0</string>
     <string name="midian_appboxes_avi_not_supported">Midian.Appboxes (avi not supported)</string>
     <string name="yobox_btn">yobox</string>
     <string name="yodbox">https://yodbox.com/817f0xzn88lr.html</string>
+    <string name="evoload">https://evoload.io/d/vNTmWObV6O5oAA</string>
+    <string name="evoload_ref">https://evoload.io</string>
+    <string name="cloudvideo">CloudVideo</string>
 
 </resources>

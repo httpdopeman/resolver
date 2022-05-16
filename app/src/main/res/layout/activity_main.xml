@@ -222,6 +222,13 @@
                         android:onClick="yodbox"
                         android:text="@string/yobox_btn"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="cloudvideo"
+                        android:text="@string/cloudvideo"
+                        tools:ignore="UsingOnClickInXml"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -383,6 +390,13 @@
                         android:layout_height="wrap_content"
                         android:onClick="upstream"
                         android:text="UpStream"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="evoload"
+                        android:text="Evoload"
                         tools:ignore="UsingOnClickInXml" />
                 </LinearLayout>
 
