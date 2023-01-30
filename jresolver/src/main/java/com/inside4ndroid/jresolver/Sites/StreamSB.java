@@ -1,19 +1,8 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.util.Base64;
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.ANRequest;
-import com.androidnetworking.common.ANResponse;
-import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
@@ -23,34 +12,18 @@ import com.inside4ndroid.jresolver.Utils.M3UItem;
 import com.inside4ndroid.jresolver.Utils.M3UParser;
 import com.inside4ndroid.jresolver.Utils.M3UPlaylist;
 import com.inside4ndroid.jresolver.Utils.Utils;
-import com.inside4ndroid.jresolver.callbacks.NetworkCallback;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import okio.Utf8;
 
 public class StreamSB {
 
-    private static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4136.7 Safari/537.36";;
+    private static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4136.7 Safari/537.36";
     private static String HOST;
     private static String MEDIAID;
     private static String B64DOMAIN;
@@ -59,16 +32,24 @@ public class StreamSB {
         MEDIAID = Utils.getID(url);
         HOST = Utils.getDomainFromURL(url);
         final String Nurl = generateUrl();
+        String ref = "https://sbspeed.com/";
+
+        Log.d("THE REF : ", ref);
+
+        Log.d("THE NURL", Nurl);
 
         AndroidNetworking.get(Nurl)
                 .setUserAgent(UserAgent)
-                .addHeaders("Referer", url)
-                .addHeaders("watchsb", "streamsb")
+                .addHeaders("Referer", ref)
+                .addHeaders("watchsb", "sbstream")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+
+                            System.out.println(response);
+
                             JSONObject obj = response.getJSONObject("stream_data");
                             String file = obj.getString("file");
                             AndroidNetworking.get(file)
@@ -114,23 +95,24 @@ public class StreamSB {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+                        Log.d("THE RROR ", anError.getErrorBody() + " "+ anError.getErrorDetail());
                     }
                 });
 
     }
 
     private static String generateUrl(){
-        String generateLink1 = makeid()+"||"+MEDIAID+"||"+makeid()+"||streamsb";
-        String L1binary = asciiTObinary(generateLink1);
-        String L1hex = binaryTOhex(L1binary);
-        String partial = makeid()+"||"+makeid()+"||"+makeid()+"||streamsb";
-        String P1binary = asciiTObinary(partial);
-        String P1hex = binaryTOhex(P1binary);
-        String LastPart = makeid()+"||"+P1hex+"||"+makeid()+"||streamsb";
+        String generateLink1 = makeid()+"||"+MEDIAID+"||"+makeid()+"||streamsb"; // x
+        String L1binary = asciiTObinary(generateLink1); // c1
+        String L1hex = binaryTOhex(L1binary); // c1
+        String partial = makeid()+"||"+makeid()+"||"+makeid()+"||streamsb"; // x
+        String P1binary = asciiTObinary(partial); // c2
+        String P1hex = binaryTOhex(P1binary); // c2
+        String LastPart = makeid()+"||"+P1hex+"||"+makeid()+"||streamsb"; // x
         String LastPart1 = asciiTObinary(LastPart);
-        String L2hex = binaryTOhex(LastPart1);
+        String L2hex = binaryTOhex(LastPart1); // c3
 
-        return HOST+"/sources43/"+L1hex+"/"+L2hex;
+        return HOST+"/sources50/"+L1hex+"/"+L2hex;
     }
 
     private static String makeid() {
@@ -155,4 +137,5 @@ public class StreamSB {
     private static String binaryTOhex(String binary) {
         return new BigInteger(binary, 2).toString(16);
     }
+
 }

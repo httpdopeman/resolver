@@ -1,18 +1,15 @@
 package com.inside4ndroid.jresolver;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.androidnetworking.AndroidNetworking;
 import com.inside4ndroid.jresolver.Sites.Amazon;
-import com.inside4ndroid.jresolver.Sites.Anavidz;
 import com.inside4ndroid.jresolver.Sites.Aparat;
 import com.inside4ndroid.jresolver.Sites.Archive;
 import com.inside4ndroid.jresolver.Sites.BitChute;
-import com.inside4ndroid.jresolver.Sites.BitTube;
+import com.inside4ndroid.jresolver.Sites.BitTube_dead;
 import com.inside4ndroid.jresolver.Sites.Brighteon;
 import com.inside4ndroid.jresolver.Sites.CloudVideo;
 import com.inside4ndroid.jresolver.Sites.DMotion;
@@ -25,20 +22,20 @@ import com.inside4ndroid.jresolver.Sites.FanSubs;
 import com.inside4ndroid.jresolver.Sites.Diasfem;
 import com.inside4ndroid.jresolver.Sites.GDStream;
 import com.inside4ndroid.jresolver.Sites.GUContent;
-import com.inside4ndroid.jresolver.Sites.GoMo;
 import com.inside4ndroid.jresolver.Sites.GoUnlimited;
 import com.inside4ndroid.jresolver.Sites.HDVid;
-import com.inside4ndroid.jresolver.Sites.MediaShore;
 import com.inside4ndroid.jresolver.Sites.Midian;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
+import com.inside4ndroid.jresolver.Sites.StreamLare;
 import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
+import com.inside4ndroid.jresolver.Sites.StreamVid;
 import com.inside4ndroid.jresolver.Sites.Upstream;
 import com.inside4ndroid.jresolver.Sites.VidMoly;
 import com.inside4ndroid.jresolver.Sites.VideoBIN;
 import com.inside4ndroid.jresolver.Sites.VideoBM;
 import com.inside4ndroid.jresolver.Sites.VoeSX;
-import com.inside4ndroid.jresolver.Sites.Voxzer;
+import com.inside4ndroid.jresolver.Sites.Voxzer_dead;
 import com.inside4ndroid.jresolver.Sites.Vudeo;
 import com.inside4ndroid.jresolver.Sites.YT;
 import com.inside4ndroid.jresolver.Sites.YodBox;
@@ -67,7 +64,7 @@ public class Jresolver {
 
     private Context context;
     private OnTaskCompleted onComplete;
-    public static final String agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Safari/537.36";
+    public static final String agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36";
     private final String mp4upload = "https?:\\/\\/(www\\.)?(mp4upload)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String filerio = "https?:\\/\\/(www\\.)?(filerio)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String sendvid = "https?:\\/\\/(www\\.)?(sendvid)\\.[^\\/,^\\.]{2,}\\/.+";
@@ -79,20 +76,19 @@ public class Jresolver {
     private final String youtube = "^((?:https?:)?\\/\\/)?((?:www|m)\\.)?((?:youtube\\.com|youtu.be))(\\/(?:[\\w\\-]+\\?v=|embed\\/|v\\/)?)([\\w\\-]+)(\\S+)?$";
     private final String solidfiles = "https?:\\/\\/(www\\.)?(solidfiles)\\.[^\\/,^\\.]{2,}\\/(v)\\/.+";
     private final String vidoza = "https?:\\/\\/(www\\.)?(vidoza)\\.[^\\/,^\\.]{2,}.+";
-    private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza|streamm4u)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
+    private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza|streamm4u|vanfem)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
     private final String vidbm = "https?:\\/\\/(vidbam)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String bitTube = "https?:\\/\\/(www\\.)?(bittube\\.video\\/videos)\\/(watch|embed)\\/.+";
     private final String videoBIN = "https?:\\/\\/(videobin\\.co)\\/.+";
     private final String fourShared = "https?:\\/\\/(www\\.)?(4shared\\.com)\\/(video|web\\/embed)\\/.+";
-    private final String streamtape = "https?:\\/\\/(www\\.)?(streamtape\\.com)\\/(v|e)\\/.+";
+    private final String streamtape = "https?:\\/\\/(www\\.)?(streamtape\\.com|shavetape\\.cash|streamtape\\.to|strtape\\.cloud|streamtape\\.net|streamta\\.pe|streamtape\\.site|strcloud\\.link|strtpe\\.link|streamtape\\.cc|scloud\\.online|stape\\.fun|streamadblockplus\\.com|shavetape\\.cash)\\/(v|e)\\/.+";
     private final String vudeo = "https?:\\/\\/(www\\.)?(vudeo\\.net)\\/.+";
     private final String amazon = "https?:\\/\\/(www\\.)?(amazon\\.com)\\/?(clouddrive)\\/+";
-    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws|sh|pm))/(?:d|e)/([0-9a-zA-Z]+)";
-    private final String streamsb = ".+(streamsb|sbplay|sbplay2|sbembed|sbembed1|sbvideo|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb)\\.(com|net|one|org)/.+";
+    private final String doodstream = "(?://|\\.)(dood(?:stream)?\\.(?:com|watch|to|so|la|ws|sh|pm|re|wf))/(?:d|e)/([0-9a-zA-Z]+)";
+    private final String streamsb = ".+(sblongvu|sbspeed|sbembed|sbembed1|sbplay.org|sbvideo|streamsb|sbchill|streamsss|sblanh|sblongvu|sbplay|cloudemb|playersb|tubesb|sbplay1|embedsb|watchsb|sbplay2|japopav|viewsb|sbplay2|sbfast|sbfull|javplaya|ssbstream|p1ayerjavseen|sbthe)\\.(com|net|one|org|tv|xyz)/.+";
     private final String mixdrop = ".+(mixdrop)\\.(co|to|sx|bz)\\/.+";
     private final String gounlimited = "https?:\\/\\/(www\\.)?(gounlimited)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String voxzer = "https?:\\/\\/(player\\.)?(voxzer\\.)(?:org).+";
-    private final String anavidz = ".+(anavidz\\.com).+";
     private final String aparat = ".+(aparat\\.com/v/).+";
     private final String archive = ".+(archive)\\.(org)\\/.+";
     private final String bitchute = ".+(bitchute\\.com)/(?:video|embed).+";
@@ -113,6 +109,8 @@ public class Jresolver {
     private final String yodbox = ".+(yodbox)\\.(com)/.+";
     private final String evoload = ".+(evoload)\\.(io)/.+";
     private final String cloudvideo = ".+(cloudvideo)\\.(tv)/.+";
+    private final String streamlare = "(?://|\\.)((?:streamlare|sl(?:maxed|tube|watch))\\.(?:com?|org))/(?:e|v)/([0-9A-Za-z]+)";
+    private final String streamvid = "(?://|\\.)(streamvid\\.net)/(?:embed-)?([0-9a-zA-Z]+)";
 
     public Jresolver(@NonNull Context context){
         this.context=context;
@@ -124,6 +122,10 @@ public class Jresolver {
             MP4Upload.fetch(url,onComplete);
         } else if (check(vidmoly,url)){
             VidMoly.fetch(url,onComplete);
+        } else if (check(streamvid,url)){
+            StreamVid.fetch(url,onComplete);
+        } else if (check(streamlare,url)){
+            StreamLare.fetch(url,onComplete);
         } else if (check(evoload,url)){
             EvoLoad.fetch(url,onComplete);
         } else if (check(cloudvideo,url)){
@@ -138,17 +140,6 @@ public class Jresolver {
             EplayVid.fetch(url,onComplete);
         }  else if (check(voesx, url)) {
             VoeSX.fetch(url, onComplete);
-        } else if (check(gomoplayer, url)) {
-            if(!url.contains("embed")) {
-                String[] splits = url.split("/");
-                String ID = splits[splits.length-1];
-                String newurl = "https://gomoplayer.com/embed-"+ID+".html";
-                GoMo.fetch(newurl, onComplete);
-            } else {
-                GoMo.fetch(url, onComplete);
-            }
-        } else if (check(mediashore,url)){
-            MediaShore.fetch(url,onComplete);
         } else if (check(hdvid, url)) {
             if(url.contains("embed")){
                 HDVid.fetch(url,onComplete);
@@ -178,10 +169,8 @@ public class Jresolver {
             Archive.fetch(url,onComplete);
         } else if (check(aparat, url)) {
             Aparat.fetch(url,onComplete);
-        }else if (check(anavidz, url)) {
-            Anavidz.fetch(url,onComplete);
         } else if (check(voxzer, url)) {
-            Voxzer.fetch(url,onComplete);
+            Voxzer_dead.fetch(url,onComplete);
         } else if (check(mixdrop, url)) {
             MixDrop.fetch(url,onComplete);
         } else if (check(streamsb, url)) {
@@ -195,7 +184,7 @@ public class Jresolver {
         } else if (check_fb_video(url)) {
             FB.fetch(url,onComplete);
         } else if (check(mediafire, url)) {
-            MFire.fetch(url,onComplete);
+            MFire.fetch(context,url,onComplete);
         } else if (check(okru,url)){
             OKRU.fetch(url,onComplete);
         } else if (check(vk,url)){
@@ -215,13 +204,19 @@ public class Jresolver {
         } else if (check(vidbm,url)){
             VideoBM.fetch(url,onComplete);
         } else if (check(bitTube,url)){
-            BitTube.fetch(url,onComplete);
+            BitTube_dead.fetch(url,onComplete);
         } else if (check(videoBIN,url)){
             VideoBIN.fetch(url,onComplete);
         } else if (check(fourShared,url)){
             FShared.fetch(url,onComplete);
         }else if (check(streamtape,url)){
-            StreamTape.fetch(url,onComplete);
+            if(url.contains("shavetape.cash")){
+                url = url.replace("shavetape.cash", "streamtape.to");
+                StreamTape.fetch(url,onComplete);
+            } else {
+                StreamTape.fetch(url,onComplete);
+            }
+
         } else if (check(vudeo,url)) {
             Vudeo.fetch(url, onComplete);
         } else  if (check(gounlimited,url)){

@@ -51,11 +51,11 @@ public class VoeSX {
 
 
     private static String getSrc(String code){
-        final String regex = "hls\": \"(.*?)\"";
+        final String regex = "'hls':.*'http(.*?)'";
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(code);
         if (matcher.find()) {
-            return matcher.group(1);
+            return "http"+matcher.group(1);
         }
         return null;
     }

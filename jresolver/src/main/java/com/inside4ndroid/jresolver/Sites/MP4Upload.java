@@ -74,7 +74,7 @@ public class MP4Upload {
     }
 
     private static String getEvalCode(String html){
-        final String regex = "eval(.*)";
+        final String regex = "eval\\(function\\(p,a,c,k,e,(?:r|d)(.*)";
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(html);
         if (matcher.find()) {

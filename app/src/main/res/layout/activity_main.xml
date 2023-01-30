@@ -64,6 +64,13 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="streamvid"
+                        android:text="@string/streamvid"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="mp4upload"
                         android:text="@string/mp4upload"
                         tools:ignore="UsingOnClickInXml"/>
@@ -153,12 +160,12 @@
                         android:text="@string/gounlimited"
                         tools:ignore="UsingOnClickInXml"/>
 
-                    <Button
+                    <!--<Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="anavidz"
                         android:text="@string/anavidz_btn"
-                        tools:ignore="UsingOnClickInXml"/>
+                        tools:ignore="UsingOnClickInXml"/>-->
 
                     <Button
                         android:layout_width="match_parent"
@@ -188,7 +195,7 @@
                         android:text="@string/googleusercontent_btn"
                         tools:ignore="UsingOnClickInXml"/>
 
-                    <Button
+                    <!--<Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="mediashore"
@@ -200,7 +207,7 @@
                         android:layout_height="wrap_content"
                         android:onClick="gomoplayer"
                         android:text="gomoplayer"
-                        tools:ignore="UsingOnClickInXml"/>
+                        tools:ignore="UsingOnClickInXml"/>-->
 
                     <Button
                         android:layout_width="match_parent"
@@ -237,6 +244,13 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:padding="3dp">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="streamz"
+                        android:text="@string/streamz"
+                        tools:ignore="UsingOnClickInXml"/>
 
                     <Button
                         android:layout_width="match_parent"
@@ -294,12 +308,12 @@
                         android:text="@string/vidbm"
                         tools:ignore="UsingOnClickInXml"/>
 
-                    <Button
+                    <!--<Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="bittube"
                         android:text="@string/bittube"
-                        tools:ignore="UsingOnClickInXml" />
+                        tools:ignore="UsingOnClickInXml" />-->
 
                     <Button
                         android:layout_width="match_parent"
@@ -322,12 +336,12 @@
                         android:text="@string/streamsbz"
                         tools:ignore="UsingOnClickInXml" />
 
-                    <Button
+                    <!--<Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="voxzer"
                         android:text="@string/voxzer_string"
-                        tools:ignore="UsingOnClickInXml" />
+                        tools:ignore="UsingOnClickInXml" />-->
 
                     <Button
                         android:layout_width="match_parent"
@@ -397,6 +411,13 @@
                         android:layout_height="wrap_content"
                         android:onClick="evoload"
                         android:text="Evoload"
+                        tools:ignore="UsingOnClickInXml" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="streamlare"
+                        android:text="Streamlare"
                         tools:ignore="UsingOnClickInXml" />
                 </LinearLayout>
 

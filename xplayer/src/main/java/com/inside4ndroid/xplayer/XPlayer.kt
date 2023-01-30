@@ -67,55 +67,56 @@ class XPlayer : AppCompatActivity() {
 
         //If google drive you need to set custom cookie
 
-            if (mCookie != "null") {
-                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null,
-                        DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
-                        DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
-                        true)
-                httpDataSourceFactory.defaultRequestProperties.set("Cookie", mCookie)
-                dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
-                when (Util.inferContentType(Uri.parse(mUrl))) {
-                    C.TYPE_HLS -> {
-                        val mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
-                        player.prepare(mediaSource)
-                    }
-
-                    C.TYPE_OTHER -> {
-                        val mediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
-                        player.prepare(mediaSource)
-                    }
-
-                    else -> {
-                        //This is to catch SmoothStreaming and DASH types which are not supported currently
-                        setResult(Activity.RESULT_CANCELED)
-                        finish()
-                    }
+        if (mCookie != "null") {
+            val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null,
+                DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                true)
+            httpDataSourceFactory.defaultRequestProperties.set("Cookie", mCookie)
+            dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
+            when (Util.inferContentType(Uri.parse(mUrl))) {
+                C.TYPE_HLS -> {
+                    val mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
+                    player.prepare(mediaSource)
                 }
-            } else if (mReferer != "null") {
-                val httpDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(this, applicationInfo.loadLabel(packageManager).toString()), null,
-                        DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
-                        DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
-                        true)
-                httpDataSourceFactory.defaultRequestProperties.set("Referer", mReferer)
-                dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
-                when (Util.inferContentType(Uri.parse(mUrl))) {
-                    C.TYPE_HLS -> {
-                        val mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
-                        player.prepare(mediaSource)
-                    }
 
-                    C.TYPE_OTHER -> {
-                        val mediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
-                        player.prepare(mediaSource)
-                    }
+                C.TYPE_OTHER -> {
+                    val mediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
+                    player.prepare(mediaSource)
+                }
 
-                    else -> {
-                        //This is to catch SmoothStreaming and DASH types which are not supported currently
-                        setResult(Activity.RESULT_CANCELED)
-                        finish()
-                    }
+                else -> {
+                    //This is to catch SmoothStreaming and DASH types which are not supported currently
+                    setResult(Activity.RESULT_CANCELED)
+                    finish()
                 }
             }
+        } else if (mReferer != "null") {
+
+            val httpDataSourceFactory = DefaultHttpDataSourceFactory("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4136.7 Safari/537.36", null,
+                DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                true)
+            httpDataSourceFactory.defaultRequestProperties.set("Referer", mReferer)
+            dataSourceFactory = DefaultDataSourceFactory(applicationContext, null, httpDataSourceFactory)
+            when (Util.inferContentType(Uri.parse(mUrl))) {
+                C.TYPE_HLS -> {
+                    val mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
+                    player.prepare(mediaSource)
+                }
+
+                C.TYPE_OTHER -> {
+                    val mediaSource = ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mUrl))
+                    player.prepare(mediaSource)
+                }
+
+                else -> {
+                    //This is to catch SmoothStreaming and DASH types which are not supported currently
+                    setResult(Activity.RESULT_CANCELED)
+                    finish()
+                }
+            }
+        }
 
 
         progresbar_video_play.setVisibility(View.VISIBLE)

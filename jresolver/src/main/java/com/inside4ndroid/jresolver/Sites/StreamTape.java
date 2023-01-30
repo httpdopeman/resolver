@@ -26,6 +26,8 @@ public class StreamTape {
             url = url.replace("/e/", "/v/");
         }
 
+        Log.d("STREAMTAPE URL ", url);
+
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
                 .addHeaders("Referer", "https://streamtape.com/")
@@ -33,23 +35,35 @@ public class StreamTape {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
+
                         Pattern pattern = null;
-                        if(response.contains("norobot")){
-                            pattern = Pattern.compile("ById\\('.+robot.+?=.*([\"']//[^;+]+).*'(.*?)'");
-                        } else {
-                            pattern = Pattern.compile("ById\\('?robot.+?=.*([\"']//[^;+]+).*'(.*?)'");
-                        }
+                        Pattern pattern1 = null;
+                        String code = null;
+
+                        pattern = Pattern.compile("norobotlink.*streamtape.+com|to(.*?)&token");
+                        pattern1 = Pattern.compile("ideoooolink.*token=(.*?)'\\)");
 
                         Matcher matcher = pattern.matcher(response);
+                        Matcher matcher2 = pattern1.matcher(response);
                         if (matcher.find()) {
 
                             String match1 = matcher.group(1);
-                            String match2 = matcher.group(2);
+                            //String code = matcher2.group(1);
 
-                            match1 = match1.replace("'", "");
-                            match2 = match2.substring(3);
+                            Log.d("MATCH1 ", match1);
+                            //Log.d("MATCH2 ", code);
 
-                            String src = "https:"+match1+match2+"&stream=1";
+                            if (matcher2.find()) {
+                                code = matcher2.group(1);
+                                Log.d("MATCH2 ", code);
+                            }
+
+                            String src = "https://streamtape.com"+match1+"&token="+code+"&stream=1";
+
+                            Log.d("THE SRC ", src);
+
+                            Log.d("THE SRC URL ", src);
+
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                             StrictMode.setThreadPolicy(policy);
                             try {
@@ -57,8 +71,7 @@ public class StreamTape {
                                 HttpURLConnection ucon = null;
                                 ucon = (HttpURLConnection) url.openConnection();
                                 ucon.setConnectTimeout(6000);
-                                ucon.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0");
-                                ucon.setRequestProperty("Referer", "https://streamtape.com/");
+                                ucon.setRequestProperty("User-Agent", agent);
                                 ucon.setInstanceFollowRedirects(false);
                                 URL secondURL = new URL(ucon.getHeaderField("Location"));
                                 String linkF = secondURL.toString();
@@ -82,6 +95,7 @@ public class StreamTape {
 
                     @Override
                     public void onError(ANError anError) {
+                        Log.d("AN ERROR ", anError.getErrorBody());
                         onComplete.onError();
                     }
                 });

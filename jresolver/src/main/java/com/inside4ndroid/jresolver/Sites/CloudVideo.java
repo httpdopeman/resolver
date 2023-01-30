@@ -4,6 +4,8 @@ import static com.inside4ndroid.jresolver.Jresolver.agent;
 import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
 import static com.inside4ndroid.jresolver.Utils.Utils.getID;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;

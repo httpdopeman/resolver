@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void streamvid(View view) {letGo("https://streamvid.net/wdw5ru5kvian", "https://streamvid.net/wdw5ru5kvian");}
     public void mp4upload(View view) {letGo(getString(R.string.s_mp4upload), getString(R.string.s_mp4upload));}
     public void gphotos(View view) {letGo(getString(R.string.s_gphotos), getString(R.string.s_gphotos));}
     public void fb(View view) {letGo(getString(R.string.s_facebook), getString(R.string.s_facebook));}
@@ -103,19 +105,16 @@ public class MainActivity extends AppCompatActivity {
     public void fEmbed(View view) {letGo(getString(R.string.s_fembed), getString(R.string.s_fembed));}
     public void filerio(View view){letGo(getString(R.string.s_filerio), getString(R.string.s_filerio));}
     public void dailymotion(View view) {letGo(getString(R.string.s_dailymotion), getString(R.string.s_dailymotion));}
-    public void vidbm(View view) {letGo(getString(R.string.s_vidbam), getString(R.string.s_vidbam));}
-    public void bittube(View view) {letGo(getString(R.string.s_bittube), getString(R.string.s_bittube));}
+    public void vidbm(View view) {letGo(getString(R.string.s_vidbam), "https://vidbam.org/");}
     public void videobin(View view) {letGo(getString(R.string.s_videobin), getString(R.string.s_videobin));}
     public void fourshared(View view) {letGo(getString(R.string.s_fourshared), getString(R.string.s_fourshared));}
     public void streamtape(View view) {letGo(getString(R.string.s_streamtape), getString(R.string.s_streamtape));}
     public void vudeo(View view) {letGo(getString(R.string.s_vudeo), getString(R.string.s_vudeo));}
     public void amazon(View view) {letGo(getString(R.string.amazon), getString(R.string.amazon));}
     public void doodstream(View view) {letGo(getString(R.string.dood), getString(R.string.dood));}
-    public void streamsb(View view) {letGo(getString(R.string.streamsb) , getString(R.string.streamsb));}
+    public void streamsb(View view) {letGo(getString(R.string.streamsb) , "https://sbspeed.com/");}
     public void mixdrop(View view) {letGo(getString(R.string.mdrop), getString(R.string.mdrop));}
     public void gounlimited(View view) {letGo(getString(R.string.gounlimiteduri), getString(R.string.gounlimiteduri));}
-    public void voxzer(View view) {letGo(getString(R.string.voxzer_uri), getString(R.string.voxzer_uri));}
-    public void anavidz(View view) {letGo(getString(R.string.anavidz_uri), getString(R.string.anavidz_uri));}
     public void aparat(View view) {letGo(getString(R.string.aparat_uri), getString(R.string.aparat_uri));}
     public void archive(View view) {letGo(getString(R.string.archive_uri), getString(R.string.archive_uri));}
     public void bitchute(View view) {letGo(getString(R.string.bitchute), getString(R.string.bitchute));}
@@ -126,16 +125,16 @@ public class MainActivity extends AppCompatActivity {
     public void gdstream(View view) {letGo(getString(R.string.gdstream),getString(R.string.gdstream));}
     public void googleusercontent(View view) {letGo(getString(R.string.gusercontent), getString(R.string.google));}
     public void hdvid(View view) {letGo(getString(R.string.hdvid),getString(R.string.hdvid));}
-    public void mediashore(View view) {letGo(getString(R.string.mediashore),getString(R.string.mediashore));}
     public void voesx(View view) {letGo(getString(R.string.voesx), getString(R.string.voesx));}
-    public void gomoplayer(View view) {letGo(getString(R.string.gomplayer), getString(R.string.gomplayer));}
     public void eplayvid(View view) {letGo(getString(R.string.eplayvid), getString(R.string.eplayvid));}
     public void vidmoly(View view) {letGo(getString(R.string.vidmoly), getString(R.string.vidmolyref));}
     public void midian(View view) {letGo(getString(R.string.midian), getString(R.string.google));}
     public void upstream(View view) {letGo(getString(R.string.upstream), getString(R.string.upstream));}
     public void yodbox(View view) {letGo(getString(R.string.yodbox), getString(R.string.yodbox));}
     public void evoload(View view) {letGo(getString(R.string.evoload), getString(R.string.evoload_ref));}
-    public void cloudvideo(View view) {letGo("https://cloudvideo.tv/3yi0uhsf3yic", "https://cloudvideo.tv");}
+    public void cloudvideo(View view) {letGo("https://cloudvideo.tv/uw3a35m590w6", "https://cloudvideo.tv/");}
+    public void streamlare(View view) {letGo("https://slmaxed.com/v/9aNdbzk2JGOD8JjB", "https://sltube.org/v/padWzjBP7Akz9NyA");}
+    public void streamz(View view) {letGo("https://streamz.ws/fc3l1ZXk4anp0a2pmWFhY", "https://streamz.ws/fc3l1ZXk4anp0a2pmWFhY");}
 
     public boolean checkInternet() {
         boolean what;
@@ -199,14 +198,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void watchVideo(Jmodel xModel){
+
+        String uri;
+        String test = xModel.getUrl().substring(xModel.getUrl().length() - 1);
+
+        if(test.equals("\"")){
+            uri = removeLastChar(xModel.getUrl());
+            Log.d("THE URL EDIT", uri);
+        } else {
+            uri = xModel.getUrl();
+            Log.d("THE URI ", uri);
+        }
+
         Intent intent = new  Intent(this, XPlayer.class);
-        intent.putExtra(XPlayer.XPLAYER_URL, xModel.getUrl());
+        intent.putExtra(XPlayer.XPLAYER_URL, uri);
         if (xModel.getCookie()!=null){
             intent.putExtra(XPlayer.XPLAYER_COOKIE,xModel.getCookie());
         }
         intent.putExtra(XPlayer.XPLAYER_REFERER, player_referer);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    public static String removeLastChar(String str) {
+        return removeLastChars(str, 1);
+    }
+
+    public static String removeLastChars(String str, int chars) {
+        return str.substring(0, str.length() - chars);
     }
 
     public void dev(View view) {

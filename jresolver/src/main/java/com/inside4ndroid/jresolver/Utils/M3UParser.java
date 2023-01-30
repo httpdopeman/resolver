@@ -41,16 +41,11 @@ public class M3UParser {
             String[] dataArray = currLine.split(",");
             try {
                 String url = dataArray[dataArray.length-1].substring(dataArray[dataArray.length-1].indexOf(EXT_URL));
-                if(url.contains("iframes")){
-                    continue;
-                } else {
-                    Matcher b = Pattern.compile("RESOLUTION.*x(.*?),").matcher(Arrays.toString(dataArray));
-                    if(b.find()){
-                        playlistItem.setItemName(b.group(1)+"p");
-                    }
-                    playlistItem.setItemUrl(url);
-
+                Matcher b = Pattern.compile("RESOLUTION.*x(.*?),").matcher(Arrays.toString(dataArray));
+                if(b.find()){
+                    playlistItem.setItemName(b.group(1)+"p");
                 }
+                playlistItem.setItemUrl(url);
 
             } catch (Exception A){
                 continue;
