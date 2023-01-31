@@ -64,6 +64,13 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="vidhd"
+                        android:text="@string/vidhd"
+                        tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="streamvid"
                         android:text="@string/streamvid"
                         tools:ignore="UsingOnClickInXml"/>
@@ -236,6 +243,14 @@
                         android:onClick="cloudvideo"
                         android:text="@string/cloudvideo"
                         tools:ignore="UsingOnClickInXml"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="linkbox"
+                        android:text="@string/linkbox"
+                        tools:ignore="UsingOnClickInXml"/>
+
                 </LinearLayout>
 
                 <LinearLayout

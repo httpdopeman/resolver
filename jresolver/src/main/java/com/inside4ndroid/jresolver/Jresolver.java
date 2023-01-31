@@ -24,6 +24,7 @@ import com.inside4ndroid.jresolver.Sites.GDStream;
 import com.inside4ndroid.jresolver.Sites.GUContent;
 import com.inside4ndroid.jresolver.Sites.GoUnlimited;
 import com.inside4ndroid.jresolver.Sites.HDVid;
+import com.inside4ndroid.jresolver.Sites.LinkBox;
 import com.inside4ndroid.jresolver.Sites.Midian;
 import com.inside4ndroid.jresolver.Sites.MixDrop;
 import com.inside4ndroid.jresolver.Sites.StreamLare;
@@ -31,6 +32,7 @@ import com.inside4ndroid.jresolver.Sites.StreamSB;
 import com.inside4ndroid.jresolver.Sites.StreamTape;
 import com.inside4ndroid.jresolver.Sites.StreamVid;
 import com.inside4ndroid.jresolver.Sites.Upstream;
+import com.inside4ndroid.jresolver.Sites.VidHD;
 import com.inside4ndroid.jresolver.Sites.VidMoly;
 import com.inside4ndroid.jresolver.Sites.VideoBIN;
 import com.inside4ndroid.jresolver.Sites.VideoBM;
@@ -77,7 +79,7 @@ public class Jresolver {
     private final String solidfiles = "https?:\\/\\/(www\\.)?(solidfiles)\\.[^\\/,^\\.]{2,}\\/(v)\\/.+";
     private final String vidoza = "https?:\\/\\/(www\\.)?(vidoza)\\.[^\\/,^\\.]{2,}.+";
     private final String fembed = "https?:\\/\\/(www\\.)?(feurl|femax20|24hd|anime789|[fv]cdn|sharinglink|streamm4u|votrefil|femoload|asianclub|dailyplanet|[jf]player|mrdhan|there|sexhd|gcloud|mediashore|xstreamcdn|vcdnplay|vidohd|vidsource|viplayer|zidiplay|embedsito|dutrag|youvideos|moviepl|vidcloud|diasfem|moviemaniac|albavido|ncdnstm|superplayxyz|cinegrabber|ndrama|fembed|vcdn|fcdn|lajkema|fembed-hd|suzihaza|streamm4u|vanfem)\\.[^\\/,^\\.]{2,}\\/(v|f)\\/.+";
-    private final String vidbm = "https?:\\/\\/(vidbam)\\.[^\\/,^\\.]{2,}\\/.+";
+    private final String vidbm = "https?:\\/\\/(vidbam|vadbam)\\.[^\\/,^\\.]{2,}\\/.+";
     private final String bitTube = "https?:\\/\\/(www\\.)?(bittube\\.video\\/videos)\\/(watch|embed)\\/.+";
     private final String videoBIN = "https?:\\/\\/(videobin\\.co)\\/.+";
     private final String fourShared = "https?:\\/\\/(www\\.)?(4shared\\.com)\\/(video|web\\/embed)\\/.+";
@@ -112,6 +114,10 @@ public class Jresolver {
     private final String streamlare = "(?://|\\.)((?:streamlare|sl(?:maxed|tube|watch))\\.(?:com?|org))/(?:e|v)/([0-9A-Za-z]+)";
     private final String streamvid = "(?://|\\.)(streamvid\\.net)/(?:embed-)?([0-9a-zA-Z]+)";
 
+    private final String linkbox = ".+(linkbox)\\.(to)/.+";
+
+    private final String vidhd = ".+(vidhd)\\.(tv|fun|online)/.+";
+
     public Jresolver(@NonNull Context context){
         this.context=context;
         AndroidNetworking.initialize(context);
@@ -122,6 +128,10 @@ public class Jresolver {
             MP4Upload.fetch(url,onComplete);
         } else if (check(vidmoly,url)){
             VidMoly.fetch(url,onComplete);
+        } else if (check(vidhd,url)){
+            VidHD.fetch(url,onComplete);
+        } else if (check(linkbox,url)){
+            LinkBox.fetch(url,onComplete);
         } else if (check(streamvid,url)){
             StreamVid.fetch(url,onComplete);
         } else if (check(streamlare,url)){

@@ -136,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
     public void streamlare(View view) {letGo("https://slmaxed.com/v/9aNdbzk2JGOD8JjB", "https://sltube.org/v/padWzjBP7Akz9NyA");}
     public void streamz(View view) {letGo("https://streamz.ws/fc3l1ZXk4anp0a2pmWFhY", "https://streamz.ws/fc3l1ZXk4anp0a2pmWFhY");}
 
+    public void linkbox(View view) {letGo("https://www.linkbox.to/file/fp3al40000bu?ch=202093565", "https://www.linkbox.to/file/fp3al40000bu?ch=202093565");}
+
+    public void vidhd(View view) {letGo("https://vidhd.fun/embed-3fbzrogstpb6.html","https://vidhd.fun/embed-3fbzrogstpb6.html");}
+
     public boolean checkInternet() {
         boolean what;
         CheckInternet checkNet = new CheckInternet(this);

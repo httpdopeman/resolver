@@ -20,7 +20,7 @@
     <string name="solidfiles">SolidFiles</string>
     <string name="fembed">FEmbed</string>
     <string name="dailymotion">DailyMotion</string>
-    <string name="vidbm">VidBM</string>
+    <string name="vidbm">VidBM/VidBam</string>
     <string name="bittube">BitTube</string>
     <string name="streamtape">StreamTape</string>
     <string name="about" tools:ignore="Typos">Supported Hosters\n
@@ -78,6 +78,8 @@
                 51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)\n
                 52. Upstream\n
                 53. YodBox
+                54. LinkBox
+                55. VidHD
 
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
@@ -96,7 +98,7 @@
     <string name="s_fembed">https://vanfem.com/v/8pzqeh8dz7175x0</string>
     <string name="s_filerio">https://filerio.in/xpljepkg5dhd</string>
     <string name="s_dailymotion">https://www.dailymotion.com/video/x7v8vg5</string>
-    <string name="s_vidbam">https://vidbam.org/3t27c6skp8mphtml</string>
+    <string name="s_vidbam">https://vadbam.com/embed-clkrflqti3qj.html</string>
     <string name="s_bittube" tools:ignore="TypographyDashes">https://bittube.video/videos/watch/8e02be96-fa09-4309-a469-3c74c945182b</string>
     <string name="s_videobin">https://videobin.co/cqgp0if1vtfj</string>
     <string name="s_fourshared">https://www.4shared.com/video/bLza9r9mea/45016068_2204489923208618_5254.html</string>
@@ -169,7 +171,7 @@
     <string name="vidmolybtn">VidMoly</string>
     <string name="gusercontent">https://lh3.googleusercontent.com/CoKseO5Jy1sOnPruoCWQ53ERsjG5ID5qQkjAehh8DIMt2M3PMWf8Gu_EKdQ9fRuD2NH50BVx90XRT1tMXB1HiKHPjvGzyTi-=m22</string>
     <string name="google">https://google.com</string>
-    <string name="hdvid">https://hdvid.tv/embed-6m7qujekpkmx.html</string>
+    <string name="hdvid">https://vidhd.fun/embed-3fbzrogstpb6.html</string>
     <string name="voesx">https://voe-unblock.com/icycuc25ewjj</string>
     <string name="eplayvid">https://eplayvid.net/watch/f8907ab0d5b90cf</string>
     <string name="vidmoly">https://vidmoly.me/vmvynw3hxpwu</string>
@@ -184,5 +186,7 @@
     <string name="cloudvideo">CloudVideo</string>
     <string name="streamvid">StreamVid</string>
     <string name="streamz">StreamZ</string>
+    <string name="linkbox">LinkBox</string>
+    <string name="vidhd">VidHD</string>
 
 </resources>
