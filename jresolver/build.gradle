@@ -3,9 +3,10 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'maven-publish'
 }
 group='com.github.Inside4ndroid'
-version='7.0'
+version='7.1'
 
 android {
     compileSdkVersion 31
@@ -25,6 +26,16 @@ android {
 
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.inside4ndroid.jresolver'
+            artifactId = 'jresolver'
+            version = '7.1'
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.volley:volley:1.2.1'
@@ -40,4 +51,6 @@ dependencies {
 
     implementation project(path: ':android-networking')
     implementation project(path: ':jresolver')
+    implementation project(path: ':xplayer')
 }
+
