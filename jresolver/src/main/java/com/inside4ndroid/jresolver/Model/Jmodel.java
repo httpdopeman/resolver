@@ -45,7 +45,7 @@ public class Jmodel implements Comparable<Jmodel>{
     }
 
     private boolean startWithNumber(String string){
-        final String regex ="^[0-9][A-Za-z0-9-\\s,]*$"; // start with number and can contain space or comma ( 480p , ENG)
+        final String regex ="^[0-9][A-Za-z0-9-\\s,]*$";
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(string);
         return  matcher.find();

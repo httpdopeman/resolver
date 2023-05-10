@@ -1,13 +1,12 @@
 package com.inside4ndroid.jresolver.Sites;
 
 import static com.inside4ndroid.jresolver.Jresolver.agent;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
+import com.inside4ndroid.jresolver.Utils.Utils;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +14,13 @@ import java.util.regex.Pattern;
 public class HDVid {
 
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
+        if(!url.contains("embed-")){
+            String host = Utils.getDomainFromURL(url);
+            String id = Utils.getID(url);
+
+            url = host+ "/embed-" + id + ".html";
+        }
+
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
                 .build()

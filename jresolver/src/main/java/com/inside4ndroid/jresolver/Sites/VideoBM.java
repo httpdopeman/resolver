@@ -1,16 +1,11 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
-
 import android.annotation.SuppressLint;
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +14,7 @@ public class VideoBM {
 
     @SuppressLint("JavascriptInterface")
     public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){
-        url = fixURL(url);
+
         if (url!=null) {
             AndroidNetworking.get(url)
                     .build()
@@ -38,24 +33,6 @@ public class VideoBM {
                         }
                     });
         }else onTaskCompleted.onError();
-    }
-
-    private static String fixURL(String url){
-        if (!url.contains("embed-")) {
-            final String regex = "org/([^']*)";
-            final Pattern pattern = Pattern.compile(regex);
-            final Matcher matcher = pattern.matcher(url);
-            if (matcher.find()) {
-                String id = matcher.group(1);
-                if (id.contains("/")) {
-                    id = id.substring(0, id.lastIndexOf("/"));
-                }
-                url = getDomainFromURL(url)+"/embed-" + id;
-            } else {
-                return null;
-            }
-        }
-        return url;
     }
 
     private static ArrayList<Jmodel> parse(String response){

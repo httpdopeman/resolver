@@ -5,15 +5,11 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
 import static com.inside4ndroid.jresolver.Utils.Utils.putModel;
-
-import android.util.Log;
 
 public class FileRIO {
     public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){

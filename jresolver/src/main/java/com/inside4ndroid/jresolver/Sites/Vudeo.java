@@ -5,7 +5,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

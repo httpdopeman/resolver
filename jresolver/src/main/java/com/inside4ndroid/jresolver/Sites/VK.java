@@ -5,15 +5,12 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.inside4ndroid.jresolver.Jresolver.agent;
 import static com.inside4ndroid.jresolver.Utils.Utils.putModel;
 import static com.inside4ndroid.jresolver.Utils.Utils.sortMe;

@@ -1,7 +1,5 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
@@ -12,11 +10,9 @@ import com.inside4ndroid.jresolver.Utils.M3UItem;
 import com.inside4ndroid.jresolver.Utils.M3UParser;
 import com.inside4ndroid.jresolver.Utils.M3UPlaylist;
 import com.inside4ndroid.jresolver.Utils.Utils;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -34,10 +30,6 @@ public class StreamSB {
         final String Nurl = generateUrl();
         String ref = "https://sbspeed.com/";
 
-        Log.d("THE REF : ", ref);
-
-        Log.d("THE NURL", Nurl);
-
         AndroidNetworking.get(Nurl)
                 .setUserAgent(UserAgent)
                 .addHeaders("Referer", ref)
@@ -47,8 +39,6 @@ public class StreamSB {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
-                            System.out.println(response);
 
                             JSONObject obj = response.getJSONObject("stream_data");
                             String file = obj.getString("file");
@@ -60,7 +50,6 @@ public class StreamSB {
                                     .getAsString(new StringRequestListener() {
                                         @Override
                                         public void onResponse(String response) {
-                                            System.out.print(response);
                                             try {
                                                 M3UPlaylist plist = new M3UParser().parseFile(response);
                                                 ArrayList<M3UItem> array = plist.getPlaylistItems();
@@ -95,7 +84,6 @@ public class StreamSB {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
-                        Log.d("THE RROR ", anError.getErrorBody() + " "+ anError.getErrorDetail());
                     }
                 });
 
@@ -112,7 +100,7 @@ public class StreamSB {
         String LastPart1 = asciiTObinary(LastPart);
         String L2hex = binaryTOhex(LastPart1); // c3
 
-        return HOST+"/sources50/"+L1hex+"/"+L2hex;
+        return HOST+"/sources16/"+L1hex+"/"+L2hex;
     }
 
     private static String makeid() {

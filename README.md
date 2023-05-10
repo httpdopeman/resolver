@@ -5,61 +5,42 @@ There is an example application which offers an example of how the resolvers wor
 
 Supported Sites/Hosts :
 
-1. Google Photos
-2. Mp4Upload
-3. Facebook
-4. Mediafire
-5. Ok.Ru
-6. VK
-7. Twitter
-8. Youtube
-9. SolidFiles
-10. Vidoza
-11. SendVid
-12. FEmbed
-13. FileRio
-14. DailyMotion
-15. VidBam
-16. VideoBin
-17. BitTube
-18. 4Shared
-19. StreamTape
-20. Vudeo
-21. Amazon Drive
-22. Doodstream
-23. StremSB
-24. Mixdrop
-25. GoUnlimited
-26. Voxzer
-27. AnaVidz
-28. Aparat
-29. Archive
-30. Bitchute
-31. Brighteon
-32. DeadlyBlogger
-33. Fansubs
-34. Diasfem (formerly femax20)
-35. GDStream
-36. Googleuserconent links (lh3.googleusercontent.com/mediaid)
-37. Hdvid
-38. Vidhdthe
-39. Mediashore
-40. VoeSX
-41. GoMoPlayer
-42. EplayVid
-43. VidMoly
-44. Embedsito
-45. Lajkema
-46. GdStream
-47. Diasfem
-48. Suzihaza
-49. Superplayyxyz
-50. Dutrag
-51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)
-52. Upstream
-53. YodBox
-54. Evoload
-55. CloudVideo
+1. Amazon
+2. Aparat
+3. Archive
+4. BitChute
+5. Brighteon
+6. Cloudvideo
+7. DeadlyBlogger
+8. DailyMotion
+9. Doodstream
+10. Eplayvid
+11. Filerio
+12. 4Shared
+13. Google Photos
+14. Google User Content
+15. Hdvid
+16. MediaFire
+17. Midian
+18. Mixdrop
+19. Mp4upload
+20. Ok.ru
+21. Sendvid
+22. Streamhide
+23. Streamlare
+24. Streamsb
+25. Streamtape
+26. Streamvid
+27. Upstream
+28. VideoBM
+29. VidHD
+30. Vidmoly
+31. Vidoza
+32. VK
+33. Voesx
+34. Vudeo
+35. Yodbox
+36. Youtube
 
 I will be adding more hosters over time and fixing any issues reported.
 

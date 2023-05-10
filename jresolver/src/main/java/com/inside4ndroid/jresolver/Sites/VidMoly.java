@@ -1,18 +1,11 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import android.os.StrictMode;
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.Utils;
-
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

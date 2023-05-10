@@ -1,2 +1,2 @@
-include ':app', ':jresolver', ':xplayer'
+include ':app', ':jresolver'
 include ':android-networking'

@@ -1,26 +1,13 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import static com.inside4ndroid.jresolver.Utils.Utils.sortMe;
-
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.OkHttpResponseListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-import com.inside4ndroid.jresolver.Utils.Utils;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import okhttp3.Response;
 
 public class EplayVid {
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete) {

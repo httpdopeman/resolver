@@ -1,25 +1,22 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import android.util.Log;
-
+import static com.inside4ndroid.jresolver.Jresolver.agent;
+import static com.inside4ndroid.jresolver.Utils.Utils.putModel;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.JSUnpacker;
-import com.inside4ndroid.jresolver.Utils.Utils;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Upstream {
-    private static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4136.7 Safari/537.36";
 
     public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){
         AndroidNetworking.get(url)
-                .setUserAgent(UserAgent)
+                .setUserAgent(agent)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
@@ -43,7 +40,7 @@ public class Upstream {
             String src = getSrc(jsUnpacker.unpack());
             if (src!=null && src.length()>0){
                 ArrayList<Jmodel> jModels = new ArrayList<>();
-                Utils.putModel(src,"Normal",jModels);
+                putModel(src,"Normal",jModels);
                 if (!jModels.isEmpty()){
                     return jModels;
                 }

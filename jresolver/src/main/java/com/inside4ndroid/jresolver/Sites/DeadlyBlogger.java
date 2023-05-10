@@ -2,7 +2,6 @@ package com.inside4ndroid.jresolver.Sites;
 
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import java.util.ArrayList;
 
 public class DeadlyBlogger {

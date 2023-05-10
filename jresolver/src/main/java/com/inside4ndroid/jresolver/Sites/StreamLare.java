@@ -1,23 +1,14 @@
 package com.inside4ndroid.jresolver.Sites;
 
 import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
-
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.Utils;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StreamLare {
 
@@ -28,8 +19,6 @@ public class StreamLare {
         url = fixURL(url);
         String api_surl = getDomainFromURL(url)+"/api/video/stream/get";
 
-        System.out.println(api_surl);
-
         AndroidNetworking.post(api_surl)
                 .addHeaders("User-Agent", userAgent)
                 .addHeaders("Referer", url)
@@ -39,8 +28,6 @@ public class StreamLare {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-
-                        System.out.println(response);
 
                         try {
 

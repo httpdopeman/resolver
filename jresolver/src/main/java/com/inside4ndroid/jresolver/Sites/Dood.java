@@ -1,15 +1,10 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import static com.inside4ndroid.jresolver.Jresolver.agent;
-
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.SecureRandom;
@@ -25,6 +20,10 @@ public class Dood {
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete) {
         String ref = url;
 
+        if(url.contains("doodstream.com")){
+            url = url.replace("doodstream.com", "dood.yt");
+        }
+
         if(url.contains("LONG")){
             isLong = true;
             url = url.replace("LONG", "");
@@ -34,8 +33,8 @@ public class Dood {
         }
 
         final String finalUrl = url;
+        String finalUrl1 = url;
         AndroidNetworking.get(url)
-                .setUserAgent(agent)
                 .addHeaders("Referer", ref)
                 .build()
                 .getAsString(new StringRequestListener() {
@@ -48,7 +47,6 @@ public class Dood {
 
                                 try {
                                     AndroidNetworking.get("https://" + getHost(matcher.group(1)))
-                                            .setUserAgent(agent)
                                             .build()
                                             .getAsString(new StringRequestListener() {
                                                 @Override
@@ -69,7 +67,6 @@ public class Dood {
                                                             token = matcher.group(1);
 
                                                             AndroidNetworking.get(urlt)
-                                                                    .setUserAgent(agent)
                                                                     .addHeaders("Referer", finalUrl)
                                                                     .build()
                                                                     .getAsString(new StringRequestListener() {
@@ -124,7 +121,6 @@ public class Dood {
                                     token = matcher.group(1);
 
                                     AndroidNetworking.get(urlt)
-                                            .setUserAgent(agent)
                                             .addHeaders("Referer", finalUrl)
                                             .build()
                                             .getAsString(new StringRequestListener() {

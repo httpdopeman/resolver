@@ -25,62 +25,42 @@
     <string name="streamtape">StreamTape</string>
     <string name="about" tools:ignore="Typos">Supported Hosters\n
                 \n
-                1. Google Photos\n
-                2. Mp4Upload\n
-                3. Facebook\n
-                4. Mediafire\n
-                5. Ok.Ru\n
-                6. VK\n
-                7. Twitter\n
-                8. Youtube\n
-                9. SolidFiles\n
-                10. Vidoza\n
-                11. SendVid\n
-                12. FEmbed\n
-                13. FileRio\n
-                14. DailyMotion\n
-                15. VidBam\n
-                16. VideoBin\n
-                17. BitTube\n
-                18. 4Shared\n
-                19. StreamTape\n
-                20. Vudeo\n
-                21. Amazon Drive\n
-                22. Doodstream\n
-                23. StremSB\n
-                24. Mixdrop\n
-                25. GoUnlimited\n
-                26. Voxzer\n
-                27. AnaVidz\n
-                28. Aparat\n
-                29. Archive\n
-                30. Bitchute\n
-                31. Brighteon\n
-                32. DeadlyBlogger\n
-                33. Fansubs\n
-                34. Diasfem (formerly femax20)\n
-                35. GDStream\n
-                36. Googleuserconent links (lh3.googleusercontent.com/mediaid)\n
-                37. Hdvid\n
-                38. Vidhdthe\n
-                39. Mediashore\n
-                40. VoeSX\n
-                41. GoMoPlayer\n
-                42. EplayVid\n
-                43. VidMoly\n
-                44. Embedsito\n
-                45. Lajkema\n
-                46. GdStream\n
-                47. Diasfem\n
-                48. Suzihaza\n
-                49. Superplayyxyz\n
-                50. Dutrag\n
-                51. Midian,Appboxes.co (avi not currentlysupported MP4 Only)\n
-                52. Upstream\n
-                53. YodBox
-                54. LinkBox
-                55. VidHD
-
+                Amazon\n
+				Aparat\n
+				Archive\n
+				BitChute\n
+				Brighteon\n
+				Cloudvideo\n
+				DeadlyBlogger\n
+				DailyMotion\n
+				Doodstream\n
+				Eplayvid\n
+				Filerio\n
+				4Shared\n
+				Google Photos\n
+				Google User Content\n
+				Hdvid\n
+				MediaFire\n
+				Midian\n
+				Mixdrop\n
+				Mp4upload\n
+				Ok.ru\n
+				Sendvid\n
+				Streamhide\n
+				Streamlare\n
+				Streamsb\n
+				Streamtape\n
+				Streamvid\n
+				Upstream\n
+				VideoBM\n
+				VidHD\n
+				Vidmoly\n
+				Vidoza\n
+				VK\n
+				Voesx\n
+				Vudeo\n
+				Yodbox\n
+				Youtube\n
                 \n
                 Developer => https://twitter.com/Inside_4ndroid</string>
     <string name="quality">Quality!</string>
@@ -90,19 +70,17 @@
     <string name="s_mediafire">http://www.mediafire.com/file/i8sjfas751yknlm/PaO_Ma_Lay_%255BOfficial_MV%255D_-_%25281080P_HD%2529.mp4/file</string>
     <string name="s_okru" tools:ignore="Typos">https://ok.ru/video/947875089023</string>
     <string name="s_vkdotcom">https://vk.com/video-94920838_456240508</string>
-    <string name="s_twitter">https://twitter.com/i/status/1115097302920847363</string>
     <string name="s_youtube">https://www.youtube.com/watch?v=O6Xu-9mhCQ0</string>
-    <string name="s_solidfiles">http://www.solidfiles.com/v/BVWL6XrLkDyLy</string>
     <string name="s_vidoza">https://vidoza.net/0bzmtkyiiche.html</string>
     <string name="s_sendvid">http://sendvid.com/3bh9588j</string>
     <string name="s_fembed">https://vanfem.com/v/8pzqeh8dz7175x0</string>
-    <string name="s_filerio">https://filerio.in/xpljepkg5dhd</string>
+    <string name="s_filerio">https://filerio.in/qo220jvbdag7</string>
     <string name="s_dailymotion">https://www.dailymotion.com/video/x7v8vg5</string>
-    <string name="s_vidbam">https://vadbam.com/embed-clkrflqti3qj.html</string>
+    <string name="s_vidbam">https://vadbam.net/embed-nfrne5azak1k.html</string>
     <string name="s_bittube" tools:ignore="TypographyDashes">https://bittube.video/videos/watch/8e02be96-fa09-4309-a469-3c74c945182b</string>
     <string name="s_videobin">https://videobin.co/cqgp0if1vtfj</string>
     <string name="s_fourshared">https://www.4shared.com/video/bLza9r9mea/45016068_2204489923208618_5254.html</string>
-    <string name="s_streamtape" tools:ignore="TypographyDashes">https://shavetape.cash/v/zK4WlAGeyYhYjJz/Kickback.2022.1080p.WEBRip.x264-RARBG.mp4</string>
+    <string name="s_streamtape" tools:ignore="TypographyDashes">https://streamadblocker.com/v/lDMbA6Zp1Li74w9/Snapped.S32E03.Denice.Smith.WEB-DL.x264-JiVE.mp4</string>
     <string name="s_vudeo">https://vudeo.net/azhfxfpzq6yq.html</string>
     <string name="no_connection">No internet connection!</string>
     <string name="congrats">Congratulations!</string>
@@ -135,16 +113,13 @@
     <string name="about_menu">About</string>
     <string name="amazon">https://www.amazon.com/clouddrive/share/uTa9DESz4iQ6tqQRpS7xFE1WizJKa2pwQPXUs91ZC0g</string>
     <string name="doodstream">doodstream</string>
-    <string name="dood">https://dood.re/d/hfkaex09ibxm</string>
+    <string name="dood">https://dood.to/d/f6opp4wboukp</string>
     <string name="streamsb">https://sbspeed.com/939fcmfwxzu5.html</string>
     <string name="streamsbz">streamsb</string>
     <string name="amazon_drive">Amazon Drive</string>
     <string name="mixdrop">mixdrop</string>
     <string name="mdrop">https://mixdrop.co/e/wn0j6x6niez116</string>
-    <string name="gounlimited">gounlimited</string>
-    <string name="gounlimiteduri">https://gounlimited.to/embed-lps2khonhl4l.html</string>
     <string name="voxzer_string">voxzer</string>
-    <string name="anavidz_btn">anavidz</string>
     <string name="aparat_btn">aparat</string>
     <string name="archive_btn">archive</string>
     <string name="voxzer_uri">https://player.voxzer.org/view/691379d68d354fe6e71265e1</string>
@@ -154,39 +129,36 @@
     <string name="brighteon_btn">brighteon</string>
     <string name="deadlyblogger_btn">deadlyblogger</string>
     <string name="fansubs_btn">fansubs</string>
-    <string name="diasfem_btn">diasfem</string>
-    <string name="gdstream_btn">gdstream</string>
     <string name="gofile_btn">gofile</string>
     <string name="bitchute">https://www.bitchute.com/video/bw21AnWYxVkP</string>
-    <string name="brighteon">https://www.brighteon.com/f0d6c463-827b-4150-83f4-69f5ae58ba1b</string>
+    <string name="brighteon" tools:ignore="TypographyDashes">https://www.brighteon.com/f0d6c463-827b-4150-83f4-69f5ae58ba1b</string>
     <string name="deadlyblogger">http://www.deadlyblogger.com/NewRelease/dal1.mp4</string>
-    <string name="fansubs">https://fansubs.tv/watch/%D9%81%D9%8A%D9%84%D9%85-%D8%A8%D9%88%D8%AA%D8%B4%D8%A7%D9%86-bocchan-%D9%85%D8%AA%D8%B1%D8%AC%D9%85_mVPR9AtKsivDicb.html</string>
-    <string name="diasfem">https://suzihaza.com/v/1lo6x-yglo5</string>
-    <string name="gdstream">https://gdstream.net/v/g3eela--z34lnkp</string>
     <string name="googleusercontent_btn">googleusercontent</string>
-    <string name="hdvid_vidhdthe_btn">hdvid / vidhdthe</string>
+    <string name="hdvid_vidhdthe_btn">hdvid</string>
     <string name="mediashore_btn">mediashore</string>
     <string name="voesx_btn">voesx</string>
     <string name="eplayvidbtn">EplayVid</string>
     <string name="vidmolybtn">VidMoly</string>
     <string name="gusercontent">https://lh3.googleusercontent.com/CoKseO5Jy1sOnPruoCWQ53ERsjG5ID5qQkjAehh8DIMt2M3PMWf8Gu_EKdQ9fRuD2NH50BVx90XRT1tMXB1HiKHPjvGzyTi-=m22</string>
     <string name="google">https://google.com</string>
-    <string name="hdvid">https://vidhd.fun/embed-3fbzrogstpb6.html</string>
+    <string name="hdvid">https://hdvid.website/7bk5d36tc52z</string>
     <string name="voesx">https://voe-unblock.com/icycuc25ewjj</string>
     <string name="eplayvid">https://eplayvid.net/watch/f8907ab0d5b90cf</string>
     <string name="vidmoly">https://vidmoly.me/vmvynw3hxpwu</string>
     <string name="vidmolyref">https://vidmoly.to/</string>
     <string name="midian">http://www.midian.appboxes.co/wolfyB/newmidian/Fitness/fitness1/Insanity%20Asylum/01%20-%20Speed%20and%20Agility.mp4</string>
-    <string name="upstream">https://upstream.to/putic1ch1jxw</string>
+    <string name="upstream">https://upstream.to/4012t41pnwyc</string>
     <string name="midian_appboxes_avi_not_supported">Midian.Appboxes (avi not supported)</string>
     <string name="yobox_btn">yobox</string>
     <string name="yodbox">https://yodbox.com/x0g2c1sx6pda/Devils.Workshop.2022.1080p.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv</string>
-    <string name="evoload">https://evoload.io/d/vNTmWObV6O5oAA</string>
-    <string name="evoload_ref">https://evoload.io</string>
     <string name="cloudvideo">CloudVideo</string>
     <string name="streamvid">StreamVid</string>
     <string name="streamz">StreamZ</string>
-    <string name="linkbox">LinkBox</string>
     <string name="vidhd">VidHD</string>
+    <string name="cloudvideo_url">https://cloudvideo.tv/rfo7bbo420fc</string>
+    <string name="cloudvideo_ref">https://cloudvideo.tv/</string>
+    <string name="streamlare_link">https://slmaxed.com/v/9aNdbzk2JGOD8JjB</string>
+    <string name="streamhide_link">https://streamhide.to/w/6ldrnj9ekkwo</string>
+    <string name="streamvid_link">https://streamvid.net/mq5bwc95r9rv</string>
 
 </resources>

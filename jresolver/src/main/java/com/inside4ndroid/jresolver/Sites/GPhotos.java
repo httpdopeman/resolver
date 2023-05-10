@@ -1,14 +1,11 @@
 package com.inside4ndroid.jresolver.Sites;
 
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.GPhotosUtils;
-
 import java.util.ArrayList;
 
 public class GPhotos {

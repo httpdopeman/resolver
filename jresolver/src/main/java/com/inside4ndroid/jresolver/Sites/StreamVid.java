@@ -7,7 +7,6 @@ import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.JSUnpacker;
 import com.inside4ndroid.jresolver.Utils.Utils;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

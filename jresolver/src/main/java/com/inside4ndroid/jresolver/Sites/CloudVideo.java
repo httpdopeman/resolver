@@ -1,18 +1,12 @@
 package com.inside4ndroid.jresolver.Sites;
 
 import static com.inside4ndroid.jresolver.Jresolver.agent;
-import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
-import static com.inside4ndroid.jresolver.Utils.Utils.getID;
-
-import android.util.Log;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.JSUnpacker;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,9 +14,6 @@ import java.util.regex.Pattern;
 public class CloudVideo {
 
     public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
-
-        url = fixURL(url);
-
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
                 .build()
@@ -81,15 +72,5 @@ public class CloudVideo {
             return matcher.group(0);
         }
         return null;
-    }
-
-    private static String fixURL(String url){
-        if (!url.contains("embed-")) {
-            String domain = getDomainFromURL(url);
-            String id = getID(url);
-            return domain+"/embed-"+id+".html";
-        } else {
-            return url;
-        }
     }
 }

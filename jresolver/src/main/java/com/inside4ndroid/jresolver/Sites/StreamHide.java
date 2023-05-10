@@ -1,61 +1,56 @@
 package com.inside4ndroid.jresolver.Sites;
 
 import static com.inside4ndroid.jresolver.Jresolver.agent;
-
+import static com.inside4ndroid.jresolver.Utils.Utils.putModel;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.JSUnpacker;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GoUnlimited {
-    public static void fetch(String url, final Jresolver.OnTaskCompleted onComplete){
+public class StreamHide {
+
+    public static void fetch(String url, final Jresolver.OnTaskCompleted onTaskCompleted){
         AndroidNetworking.get(url)
                 .setUserAgent(agent)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<Jmodel> jModels = parse(response);
-                        if (jModels!=null){
-                            onComplete.onTaskCompleted(jModels,false);
-                        }else onComplete.onError();
+                        ArrayList<Jmodel> jModels = parseVideo(response);
+                        if (jModels==null){
+                            onTaskCompleted.onError();
+                        }else onTaskCompleted.onTaskCompleted(jModels, false);
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        onComplete.onError();
+                        onTaskCompleted.onError();
                     }
                 });
     }
 
-    private static ArrayList<Jmodel> parse(String response){
+    private static ArrayList<Jmodel> parseVideo(String response){
         JSUnpacker jsUnpacker = new JSUnpacker(getEvalCode(response));
         if(jsUnpacker.detect()) {
             String src = getSrc(jsUnpacker.unpack());
             if (src!=null && src.length()>0){
-                if(!src.contains("http")){
-                    src = "https:"+src;
+                ArrayList<Jmodel> jModels = new ArrayList<>();
+                putModel(src,"Normal",jModels);
+                if (!jModels.isEmpty()){
+                    return jModels;
                 }
-                Jmodel xModel = new Jmodel();
-                xModel.setUrl(src);
-                xModel.setQuality("Normal");
-
-                ArrayList<Jmodel> xModels = new ArrayList<>();
-                xModels.add(xModel);
-                return xModels;
             }
-        }return null;
+        }
+        return null;
     }
 
-
     private static String getSrc(String code){
-        final String regex = "src: ?\"(.*?)\"";
+        final String regex = "file:\"(.*?)\"";
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(code);
         if (matcher.find()) {
@@ -65,11 +60,11 @@ public class GoUnlimited {
     }
 
     private static String getEvalCode(String html){
-        final String regex = ">eval(.*)";
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-        final Matcher matcher = pattern.matcher(html);
-        if (matcher.find()) {
-            return matcher.group(0);
+        Pattern pattern = Pattern.compile("eval\\(function(.*?)split");
+        Matcher matcher = pattern.matcher(html);
+        while (matcher.find()) {
+            String jsPacked = "eval(function"+matcher.group(1)+"split('|')))";
+            return jsPacked;
         }
         return null;
     }

@@ -6,22 +6,10 @@ import com.androidnetworking.interfaces.StringRequestListener;
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.HttpsTrustManager;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.inside4ndroid.jresolver.Utils.Utils.getDomainFromURL;
-
-import android.content.Context;
-import android.util.Log;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import javax.security.cert.CertificateException;
-import javax.security.cert.X509Certificate;
 
 public class Vidoza {
     public static void fetch( String url, final Jresolver.OnTaskCompleted onTaskCompleted){

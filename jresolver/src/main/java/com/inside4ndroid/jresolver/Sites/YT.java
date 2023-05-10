@@ -2,14 +2,12 @@ package com.inside4ndroid.jresolver.Sites;
 
 import android.content.Context;
 import android.util.SparseArray;
-
 import com.inside4ndroid.jresolver.Jresolver;
 import com.inside4ndroid.jresolver.Model.Jmodel;
 import com.inside4ndroid.jresolver.Utils.Utils;
 import com.inside4ndroid.jresolver.yt.VideoMeta;
 import com.inside4ndroid.jresolver.yt.YouTubeExtractor;
 import com.inside4ndroid.jresolver.yt.YtFile;
-
 import java.util.ArrayList;
 
 public class YT {
