@@ -103,7 +103,7 @@ I will be adding more hosters over time and fixing any issues reported.
 <pre>
 <code>
 dependencies {  <font></font>
-	implementation 'com.github.Inside4ndroid:resolver:7.2'<font></font>
+	implementation 'com.github.Inside4ndroid:resolver:[![](https://jitpack.io/v/Inside4ndroid/resolver.svg)](https://jitpack.io/#Inside4ndroid/resolver)'<font></font>
 }<font></font>
 </code>
 </pre>
