@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 public class CheckInternet {
-    Context context;
+    final Context context;
     public CheckInternet(Context context){
         this.context = context;
     }

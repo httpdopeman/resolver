@@ -3,6 +3,8 @@ package com.inside4ndroid.jresolver.yt;
 import android.content.Context;
 import android.util.SparseArray;
 
+import java.util.Objects;
+
 @Deprecated
 public abstract class YouTubeUriExtractor extends YouTubeExtractor {
 
@@ -12,7 +14,7 @@ public abstract class YouTubeUriExtractor extends YouTubeExtractor {
 
     @Override
     protected void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta videoMeta) {
-        onUrisAvailable(videoMeta.getVideoId(), videoMeta.getTitle(), ytFiles);
+        onUrisAvailable(Objects.requireNonNull(videoMeta).getVideoId(), videoMeta.getTitle(), ytFiles);
     }
 
     public abstract void onUrisAvailable(String videoId, String videoTitle, SparseArray<YtFile> ytFiles);

@@ -2,13 +2,15 @@ package com.inside4ndroid.jresolver.yt;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.util.SparseArray;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.evgenii.jsevaluator.JsEvaluator;
 import com.evgenii.jsevaluator.interfaces.JsCallback;
@@ -20,8 +22,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -29,6 +29,9 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -36,10 +39,11 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArray<YtFile>> {
 
-    static boolean CACHING = true;
-    static boolean LOGGING = false;
+    static final boolean CACHING = true;
+    static final boolean LOGGING = false;
 
     private final static String LOG_TAG = "YouTubeExtractor";
     private final static String CACHE_FILE_NAME = "decipher_js_funct";
@@ -63,16 +67,16 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
     private static final Pattern patYouTubePageLink = Pattern.compile("(http|https)://(www\\.|m.|)youtube\\.com/watch\\?v=(.+?)( |\\z|&)");
     private static final Pattern patYouTubeShortLink = Pattern.compile("(http|https)://(www\\.|)youtu.be/(.+?)( |\\z|&)");
 
-    private static final Pattern patPlayerResponse = Pattern.compile("var ytInitialPlayerResponse\\s*=\\s*(\\{.+?\\})\\s*;");
+    private static final Pattern patPlayerResponse = Pattern.compile("var ytInitialPlayerResponse\\s*=\\s*(\\{.+?})\\s*;");
     private static final Pattern patSigEncUrl = Pattern.compile("url=(.+?)(\\u0026|$)");
     private static final Pattern patSignature = Pattern.compile("s=(.+?)(\\u0026|$)");
 
-    private static final Pattern patVariableFunction = Pattern.compile("([{; =])([a-zA-Z$][a-zA-Z0-9$]{0,2})\\.([a-zA-Z$][a-zA-Z0-9$]{0,2})\\(");
-    private static final Pattern patFunction = Pattern.compile("([{; =])([a-zA-Z$_][a-zA-Z0-9$]{0,2})\\(");
+    private static final Pattern patVariableFunction = Pattern.compile("([{; =])([a-zA-Z$][a-zA-Z\\d$]{0,2})\\.([a-zA-Z$][a-zA-Z\\d$]{0,2})\\(");
+    private static final Pattern patFunction = Pattern.compile("([{; =])([a-zA-Z$_][a-zA-Z\\d$]{0,2})\\(");
 
     private static final Pattern patDecryptionJsFile = Pattern.compile("\\\\/s\\\\/player\\\\/([^\"]+?)\\.js");
     private static final Pattern patDecryptionJsFileWithoutSlash = Pattern.compile("/s/player/([^\"]+?).js");
-    private static final Pattern patSignatureDecFunction = Pattern.compile("(?:\\b|[^a-zA-Z0-9$])([a-zA-Z0-9$]{1,4})\\s*=\\s*function\\(\\s*a\\s*\\)\\s*\\{\\s*a\\s*=\\s*a\\.split\\(\\s*\"\"\\s*\\)");
+    private static final Pattern patSignatureDecFunction = Pattern.compile("(?:\\b|[^a-zA-Z\\d$])([a-zA-Z\\d$]{1,4})\\s*=\\s*function\\(\\s*a\\s*\\)\\s*\\{\\s*a\\s*=\\s*a\\.split\\(\\s*\"\"\\s*\\)");
 
     private static final SparseArray<Format> FORMAT_MAP = new SparseArray<>();
 
@@ -80,61 +84,61 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         // http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
 
         // Video and Audio
-        FORMAT_MAP.put(17, new Format(17, "3gp", 144, Format.VCodec.MPEG4, Format.ACodec.AAC, 24, false));
-        FORMAT_MAP.put(36, new Format(36, "3gp", 240, Format.VCodec.MPEG4, Format.ACodec.AAC, 32, false));
-        FORMAT_MAP.put(5, new Format(5, "flv", 240, Format.VCodec.H263, Format.ACodec.MP3, 64, false));
-        FORMAT_MAP.put(43, new Format(43, "webm", 360, Format.VCodec.VP8, Format.ACodec.VORBIS, 128, false));
-        FORMAT_MAP.put(18, new Format(18, "mp4", 360, Format.VCodec.H264, Format.ACodec.AAC, 96, false));
-        FORMAT_MAP.put(22, new Format(22, "mp4", 720, Format.VCodec.H264, Format.ACodec.AAC, 192, false));
+        FORMAT_MAP.put(17, new Format(17, "3gp", 144, 24));
+        FORMAT_MAP.put(36, new Format(36, "3gp", 240, 32));
+        FORMAT_MAP.put(5, new Format(5, "flv", 240, 64));
+        FORMAT_MAP.put(43, new Format(43, "webm", 360, 128));
+        FORMAT_MAP.put(18, new Format(18, "mp4", 360, 96));
+        FORMAT_MAP.put(22, new Format(22, "mp4", 720, 192));
 
         // Dash Video
-        FORMAT_MAP.put(160, new Format(160, "mp4", 144, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(133, new Format(133, "mp4", 240, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(134, new Format(134, "mp4", 360, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(135, new Format(135, "mp4", 480, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(136, new Format(136, "mp4", 720, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(137, new Format(137, "mp4", 1080, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(264, new Format(264, "mp4", 1440, Format.VCodec.H264, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(266, new Format(266, "mp4", 2160, Format.VCodec.H264, Format.ACodec.NONE, true));
+        FORMAT_MAP.put(160, new Format(160, "mp4", 144));
+        FORMAT_MAP.put(133, new Format(133, "mp4", 240));
+        FORMAT_MAP.put(134, new Format(134, "mp4", 360));
+        FORMAT_MAP.put(135, new Format(135, "mp4", 480));
+        FORMAT_MAP.put(136, new Format(136, "mp4", 720));
+        FORMAT_MAP.put(137, new Format(137, "mp4", 1080));
+        FORMAT_MAP.put(264, new Format(264, "mp4", 1440));
+        FORMAT_MAP.put(266, new Format(266, "mp4", 2160));
 
-        FORMAT_MAP.put(298, new Format(298, "mp4", 720, Format.VCodec.H264, 60, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(299, new Format(299, "mp4", 1080, Format.VCodec.H264, 60, Format.ACodec.NONE, true));
+        FORMAT_MAP.put(298, new Format(298, "mp4", 720));
+        FORMAT_MAP.put(299, new Format(299, "mp4", 1080));
 
         // Dash Audio
-        FORMAT_MAP.put(140, new Format(140, "m4a", Format.VCodec.NONE, Format.ACodec.AAC, 128, true));
-        FORMAT_MAP.put(141, new Format(141, "m4a", Format.VCodec.NONE, Format.ACodec.AAC, 256, true));
-        FORMAT_MAP.put(256, new Format(256, "m4a", Format.VCodec.NONE, Format.ACodec.AAC, 192, true));
-        FORMAT_MAP.put(258, new Format(258, "m4a", Format.VCodec.NONE, Format.ACodec.AAC, 384, true));
+        FORMAT_MAP.put(140, new Format(140, "m4a", 128));
+        FORMAT_MAP.put(141, new Format(141, "m4a", 256));
+        FORMAT_MAP.put(256, new Format(256, "m4a", 192));
+        FORMAT_MAP.put(258, new Format(258, "m4a", 384));
 
         // WEBM Dash Video
-        FORMAT_MAP.put(278, new Format(278, "webm", 144, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(242, new Format(242, "webm", 240, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(243, new Format(243, "webm", 360, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(244, new Format(244, "webm", 480, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(247, new Format(247, "webm", 720, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(248, new Format(248, "webm", 1080, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(271, new Format(271, "webm", 1440, Format.VCodec.VP9, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(313, new Format(313, "webm", 2160, Format.VCodec.VP9, Format.ACodec.NONE, true));
+        FORMAT_MAP.put(278, new Format(278, "webm", 144));
+        FORMAT_MAP.put(242, new Format(242, "webm", 240));
+        FORMAT_MAP.put(243, new Format(243, "webm", 360));
+        FORMAT_MAP.put(244, new Format(244, "webm", 480));
+        FORMAT_MAP.put(247, new Format(247, "webm", 720));
+        FORMAT_MAP.put(248, new Format(248, "webm", 1080));
+        FORMAT_MAP.put(271, new Format(271, "webm", 1440));
+        FORMAT_MAP.put(313, new Format(313, "webm", 2160));
 
-        FORMAT_MAP.put(302, new Format(302, "webm", 720, Format.VCodec.VP9, 60, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(308, new Format(308, "webm", 1440, Format.VCodec.VP9, 60, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(303, new Format(303, "webm", 1080, Format.VCodec.VP9, 60, Format.ACodec.NONE, true));
-        FORMAT_MAP.put(315, new Format(315, "webm", 2160, Format.VCodec.VP9, 60, Format.ACodec.NONE, true));
+        FORMAT_MAP.put(302, new Format(302, "webm", 720));
+        FORMAT_MAP.put(308, new Format(308, "webm", 1440));
+        FORMAT_MAP.put(303, new Format(303, "webm", 1080));
+        FORMAT_MAP.put(315, new Format(315, "webm", 2160));
 
         // WEBM Dash Audio
-        FORMAT_MAP.put(171, new Format(171, "webm", Format.VCodec.NONE, Format.ACodec.VORBIS, 128, true));
+        FORMAT_MAP.put(171, new Format(171, "webm", 128));
 
-        FORMAT_MAP.put(249, new Format(249, "webm", Format.VCodec.NONE, Format.ACodec.OPUS, 48, true));
-        FORMAT_MAP.put(250, new Format(250, "webm", Format.VCodec.NONE, Format.ACodec.OPUS, 64, true));
-        FORMAT_MAP.put(251, new Format(251, "webm", Format.VCodec.NONE, Format.ACodec.OPUS, 160, true));
+        FORMAT_MAP.put(249, new Format(249, "webm", 48));
+        FORMAT_MAP.put(250, new Format(250, "webm", 64));
+        FORMAT_MAP.put(251, new Format(251, "webm", 160));
 
         // HLS Live Stream
-        FORMAT_MAP.put(91, new Format(91, "mp4", 144, Format.VCodec.H264, Format.ACodec.AAC, 48, false, true));
-        FORMAT_MAP.put(92, new Format(92, "mp4", 240, Format.VCodec.H264, Format.ACodec.AAC, 48, false, true));
-        FORMAT_MAP.put(93, new Format(93, "mp4", 360, Format.VCodec.H264, Format.ACodec.AAC, 128, false, true));
-        FORMAT_MAP.put(94, new Format(94, "mp4", 480, Format.VCodec.H264, Format.ACodec.AAC, 128, false, true));
-        FORMAT_MAP.put(95, new Format(95, "mp4", 720, Format.VCodec.H264, Format.ACodec.AAC, 256, false, true));
-        FORMAT_MAP.put(96, new Format(96, "mp4", 1080, Format.VCodec.H264, Format.ACodec.AAC, 256, false, true));
+        FORMAT_MAP.put(91, new Format(91, 144, 48));
+        FORMAT_MAP.put(92, new Format(92, 240, 48));
+        FORMAT_MAP.put(93, new Format(93, 360, 128));
+        FORMAT_MAP.put(94, new Format(94, 480, 128));
+        FORMAT_MAP.put(95, new Format(95, 720, 256));
+        FORMAT_MAP.put(96, new Format(96, 1080, 256));
     }
 
     public YouTubeExtractor(@NonNull Context con) {
@@ -225,7 +229,7 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
 
         Matcher mat = patPlayerResponse.matcher(pageHtml);
         if (mat.find()) {
-            JSONObject ytPlayerResponse = new JSONObject(mat.group(1));
+            JSONObject ytPlayerResponse = new JSONObject(Objects.requireNonNull(mat.group(1)));
             JSONObject streamingData = ytPlayerResponse.getJSONObject("streamingData");
 
             JSONArray formats = streamingData.getJSONArray("formats");
@@ -237,7 +241,7 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 // `&sq=0` to the URL) and parsing emsg box to determine the number of fragment that
                 // would subsequently requested with (`&sq=N`) (cf. youtube-dl)
                 String type = format.optString("type");
-                if (type != null && type.equals("FORMAT_STREAM_TYPE_OTF"))
+                if (type.equals("FORMAT_STREAM_TYPE_OTF"))
                     continue;
 
                 int itag = format.getInt("itag");
@@ -266,7 +270,7 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 JSONObject adaptiveFormat = adaptiveFormats.getJSONObject(i);
 
                 String type = adaptiveFormat.optString("type");
-                if (type != null && type.equals("FORMAT_STREAM_TYPE_OTF"))
+                if (type.equals("FORMAT_STREAM_TYPE_OTF"))
                     continue;
 
                 int itag = adaptiveFormat.getInt("itag");
@@ -309,14 +313,16 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
 
             if (CACHING
                     && (decipherJsFileName == null || decipherFunctions == null || decipherFunctionName == null)) {
-                readDecipherFunctFromCache();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    readDecipherFunctFromCache();
+                }
             }
 
             mat = patDecryptionJsFile.matcher(pageHtml);
             if (!mat.find())
                 mat = patDecryptionJsFileWithoutSlash.matcher(pageHtml);
             if (mat.find()) {
-                curJsFileName = mat.group(0).replace("\\/", "/");
+                curJsFileName = Objects.requireNonNull(mat.group(0)).replace("\\/", "/");
                 if (decipherJsFileName == null || !decipherJsFileName.equals(curJsFileName)) {
                     decipherFunctions = null;
                     decipherFunctionName = null;
@@ -395,7 +401,7 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                 if (LOGGING)
                     Log.d(LOG_TAG, "Decipher Functname: " + decipherFunctionName);
 
-                Pattern patMainVariable = Pattern.compile("(var |\\s|,|;)" + decipherFunctionName.replace("$", "\\$") +
+                Pattern patMainVariable = Pattern.compile("(var |\\s|,|;)" + Objects.requireNonNull(decipherFunctionName).replace("$", "\\$") +
                         "(=function\\((.{1,3})\\)\\{)");
 
                 String mainDecipherFunct;
@@ -470,7 +476,9 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
                     Log.d(LOG_TAG, "Decipher Function: " + decipherFunctions);
                 decipherViaWebView(encSignatures);
                 if (CACHING) {
-                    writeDeciperFunctToChache();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        writeDeciperFunctToChache();
+                    }
                 }
             } else {
                 return false;
@@ -481,13 +489,14 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void readDecipherFunctFromCache() {
         File cacheFile = new File(cacheDirPath + "/" + CACHE_FILE_NAME);
         // The cached functions are valid for 2 weeks
         if (cacheFile.exists() && (System.currentTimeMillis() - cacheFile.lastModified()) < 1209600000) {
             BufferedReader reader = null;
             try {
-                reader = new BufferedReader(new InputStreamReader(new FileInputStream(cacheFile), "UTF-8"));
+                reader = new BufferedReader(new InputStreamReader(Files.newInputStream(cacheFile.toPath()), StandardCharsets.UTF_8));
                 decipherJsFileName = reader.readLine();
                 decipherFunctionName = reader.readLine();
                 decipherFunctions = reader.readLine();
@@ -505,29 +514,12 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         }
     }
 
-    /**
-     * @deprecated
-     */
-    public void setParseDashManifest(boolean parseDashManifest) {
-    }
-
-    /**
-     * @deprecated
-     */
-    public void setIncludeWebM(boolean includeWebM) {
-    }
-
-    /**
-     * @deprecated
-     */
-    public void setDefaultHttpProtocol(boolean useHttp) {
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void writeDeciperFunctToChache() {
         File cacheFile = new File(cacheDirPath + "/" + CACHE_FILE_NAME);
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(cacheFile), "UTF-8"));
+            writer = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(cacheFile.toPath()), StandardCharsets.UTF_8));
             writer.write(decipherJsFileName + "\n");
             writer.write(decipherFunctionName + "\n");
             writer.write(decipherFunctions);
@@ -563,35 +555,29 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         }
         stb.append("};decipher();");
 
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
+        new Handler(Looper.getMainLooper()).post(() -> new JsEvaluator(context).evaluate(stb.toString(), new JsCallback() {
+            @Override
+            public void onResult(String result) {
+                lock.lock();
+                try {
+                    decipheredSignature = result;
+                    jsExecuting.signal();
+                } finally {
+                    lock.unlock();
+                }
+            }
 
             @Override
-            public void run() {
-                new JsEvaluator(context).evaluate(stb.toString(), new JsCallback() {
-                    @Override
-                    public void onResult(String result) {
-                        lock.lock();
-                        try {
-                            decipheredSignature = result;
-                            jsExecuting.signal();
-                        } finally {
-                            lock.unlock();
-                        }
-                    }
-
-                    @Override
-                    public void onError(String errorMessage) {
-                        lock.lock();
-                        try {
-                            if (LOGGING)
-                                Log.e(LOG_TAG, errorMessage);
-                            jsExecuting.signal();
-                        } finally {
-                            lock.unlock();
-                        }
-                    }
-                });
+            public void onError(String errorMessage) {
+                lock.lock();
+                try {
+                    if (LOGGING)
+                        Log.e(LOG_TAG, errorMessage);
+                    jsExecuting.signal();
+                } finally {
+                    lock.unlock();
+                }
             }
-        });
+        }));
     }
 }

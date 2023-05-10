@@ -4,25 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipboardManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
+
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.github.javiersantos.materialstyleddialogs.enums.Style;
 import com.inside4ndroid.jresolver.Jresolver;
-import com.inside4ndroid.jresolver.Model.Jmodel;
+import com.inside4ndroid.jresolver.model.Jmodel;
 import java.util.ArrayList;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -139,21 +135,13 @@ public class MainActivity extends AppCompatActivity {
                     .setIcon(R.drawable.right)
                     .withDialogAnimation(true)
                     .setPositiveText("Close")
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            dialog.dismiss();
-                        }
-                    })
+                    .onPositive((dialog, which) -> dialog.dismiss())
                     .setNeutralText(R.string.copy)
-                    .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                            clipboardManager.setText(xModel.getUrl());
-                            if (clipboardManager.hasText()){
-                                Toast.makeText(MainActivity.this, getString(R.string.copied), Toast.LENGTH_SHORT).show();
-                            }
+                    .onNeutral((dialog, which) -> {
+                        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        clipboardManager.setText(xModel.getUrl());
+                        if (clipboardManager.hasText()){
+                            Toast.makeText(MainActivity.this, getString(R.string.copied), Toast.LENGTH_SHORT).show();
                         }
                     });
         }else {
@@ -163,18 +151,14 @@ public class MainActivity extends AppCompatActivity {
                     .setIcon(R.drawable.wrong)
                     .withDialogAnimation(true)
                     .setPositiveText(R.string.ok)
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            dialog.dismiss();
-                        }
-                    });
+                    .onPositive((dialog, which) -> dialog.dismiss());
         }
         MaterialStyledDialog dialog = builder.build();
         dialog.show();
     }
 
-    public static String removeLastChar(String str) {
+        public static String removeLastChar(String str) {
+
         return removeLastChars(str, 1);
     }
 
@@ -182,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         return str.substring(0, str.length() - chars);
     }
 
-    public void dev(View view) {
+    public void dev() {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.twitter_profile)));
             startActivity(intent);
@@ -205,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void fetch(View view) {
+    public void fetch() {
         String url = edit_query.getText().toString();
         letGo(url);
     }
@@ -234,12 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle(R.string.quality)
-                .setItems(name, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        done(model.get(which));
-                    }
-                })
+                .setItems(name, (dialog, which) -> done(model.get(which)))
                 .setPositiveButton(R.string.ok_z, null);
         builder.show();
     }

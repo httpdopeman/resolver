@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JResolver.iml" filepath="$PROJECT_DIR$/.idea/modules/JResolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JResolver.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JResolver.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JResolver.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JResolver.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JResolver.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JResolver.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JResolver.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JResolver.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.iml" filepath="$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.main.iml" filepath="$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/jresolver/JResolver.jresolver.unitTest.iml" />
+    </modules>
+  </component>
+</project>

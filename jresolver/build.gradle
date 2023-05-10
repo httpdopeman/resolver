@@ -1,18 +1,15 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
     id 'maven-publish'
 }
 group='com.github.Inside4ndroid'
-version='7.2'
+version='7.3'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 31
+        targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
@@ -23,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.inside4ndroid.jresolver'
 
 }
 
@@ -31,7 +29,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.inside4ndroid.jresolver'
             artifactId = 'jresolver'
-            version = '7.2'
+            version = '7.3'
         }
     }
 }
@@ -39,11 +37,11 @@ publishing {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.volley:volley:1.2.1'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test:runner:1.3.0-rc01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-rc01'
-    implementation 'org.apache.commons:commons-lang3:3.8.1'
-    implementation 'org.jsoup:jsoup:1.13.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'org.jsoup:jsoup:1.15.3'
 
     implementation('com.github.evgenyneu:js-evaluator-for-android:v4.0.0') {
         exclude module: 'appcompat-v7'

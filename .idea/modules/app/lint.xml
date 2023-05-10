@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconColors">
+        <ignore path="C:/Users/rob_w/Development/Personal_Apps/JResolver/app/src/main/res/drawable/about.png" />
+        <ignore path="C:/Users/rob_w/Development/Personal_Apps/JResolver/app/src/main/res/drawable/about.png" />
+    </issue>
+    <issue id="IconLocation">
+        <ignore path="C:/Users/rob_w/Development/Personal_Apps/JResolver/app/src/main/res/drawable/about.png" />
+    </issue>
+</lint>

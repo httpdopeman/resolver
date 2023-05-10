@@ -1,8 +1,8 @@
 package com.inside4ndroid.jresolver.yt;
 
-//import android.support.annotation.NonNull;
+import android.support.annotation.NonNull;
 
-import androidx.annotation.NonNull;
+import java.util.Objects;
 
 public class YtFile {
 
@@ -21,12 +21,14 @@ public class YtFile {
         return url;
     }
 
-    /**
-     * Format data for the specific file.
-     */
-    public Format getFormat() {
-        return format;
-    }
+// --Commented out by Inspection START (10/05/2023 10:51):
+//    /**
+//     * Format data for the specific file.
+//     */
+//    public Format getFormat() {
+//        return format;
+//    }
+// --Commented out by Inspection STOP (10/05/2023 10:51)
 
     /**
      * Format data for the specific file.
@@ -43,8 +45,8 @@ public class YtFile {
 
         YtFile ytFile = (YtFile) o;
 
-        if (format != null ? !format.equals(ytFile.format) : ytFile.format != null) return false;
-        return url != null ? url.equals(ytFile.url) : ytFile.url == null;
+        if (!Objects.equals(format, ytFile.format)) return false;
+        return Objects.equals(url, ytFile.url);
     }
 
     @Override

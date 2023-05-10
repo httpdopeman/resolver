@@ -48,6 +48,46 @@ I will be adding more hosters over time and fixing any issues reported.
 
 ### Add this to the PROJECT build.gradle
 
+<!--suppress ALL -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <pre>
 <code>allprojects {<font></font>
   repositories {  <font></font>

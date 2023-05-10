@@ -1,7 +1,6 @@
 package com.inside4ndroid.jresolver.yt;
 
-import androidx.annotation.NonNull;
-
+import android.support.annotation.NonNull;
 public class Format {
 
     public enum VCodec {
@@ -13,16 +12,16 @@ public class Format {
     }
 
     private final int itag;
-    private final String ext;
+    private String ext;
     private final int height;
     private final int fps;
     private VCodec vCodec;
     private ACodec aCodec;
     private final int audioBitrate;
-    private final boolean isDashContainer;
-    private final boolean isHlsContent;
+    private boolean isDashContainer;
+    private boolean isHlsContent;
 
-    Format(int itag, String ext, int height, VCodec vCodec, ACodec aCodec, boolean isDashContainer) {
+    Format(int itag, String ext, int height) {
         this.itag = itag;
         this.ext = ext;
         this.height = height;
@@ -42,8 +41,7 @@ public class Format {
         this.isHlsContent = false;
     }
 
-    Format(int itag, String ext, int height, VCodec vCodec, ACodec aCodec, int audioBitrate,
-           boolean isDashContainer) {
+    Format(int itag, String ext, int height, int audioBitrate) {
         this.itag = itag;
         this.ext = ext;
         this.height = height;
@@ -53,8 +51,7 @@ public class Format {
         this.isHlsContent = false;
     }
 
-    Format(int itag, String ext, int height, VCodec vCodec, ACodec aCodec, int audioBitrate,
-           boolean isDashContainer, boolean isHlsContent) {
+    Format(int itag, int height, int audioBitrate) {
         this.itag = itag;
         this.ext = ext;
         this.height = height;
