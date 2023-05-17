@@ -12,7 +12,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class MFire {
-
     public static void fetch(Context context, String url, final Jresolver.OnTaskCompleted onTaskCompleted) throws IOException {
         Document document = Jsoup.connect(url).get();
         Elements mfire = document.getElementsByClass("download_link");
